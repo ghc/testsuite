@@ -1,2 +1,1 @@
-Exception: : canonicalizePath: does not exist (No such file or directory)
-Exception: /no/such/file: canonicalizePath: does not exist (No such file or directory)
+True
