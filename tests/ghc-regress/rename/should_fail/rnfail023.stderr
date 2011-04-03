@@ -7,3 +7,10 @@ rnfail023.hs:8:12:
 
 rnfail023.hs:14:7:
     The type signature for `g' lacks an accompanying binding
+
+rnfail023.hs:19:16:
+    The INLINE pragma for `bar' lacks an accompanying binding
+      (The INLINE pragma must be given where `bar' is declared)
+
+rnfail023.hs:24:16:
+    The INLINE pragma for `not_bar' lacks an accompanying binding

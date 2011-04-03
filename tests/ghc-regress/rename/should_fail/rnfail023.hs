@@ -13,3 +13,13 @@ h x = x
     where
       g :: Int -> Int	-- Bogus
 
+-- Superclass method pragma test
+class Foo a where
+    bar :: a -> a
+    {-# INLINE bar #-}
+
+-- Instance test
+instance Foo Int where
+    bar = (+1)
+    {-# INLINE not_bar #-}
+
