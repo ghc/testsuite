@@ -152,6 +152,8 @@ test('encoding001',
 
 test('encoding002', normal, compile_and_run, [''])
 
+test('environment001', extra_clean(['environment001']), run_command, ['$MAKE -s --no-print-directory environment001-test'])
+
 test('newline001', extra_clean(['newline001.out']), compile_and_run, [''])
 
 test('openTempFile001', normal, compile_and_run, [''])

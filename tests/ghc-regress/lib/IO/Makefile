@@ -34,3 +34,7 @@ utf8-bom-test: utf16-test
 
 hSetEncoding001.in : latin1 utf8-test utf16le-test utf16be-test utf16-test utf32le-test utf32be-test utf32-test utf8-bom-test
 	cat >$@ latin1 utf8-test utf16le-test utf16be-test utf16-test utf32-test utf32le-test utf32be-test utf8-bom-test
+
+environment001-test:
+	@$(TEST_HC) --make -fforce-recomp -v0 environment001.hs -o environment001 
+	GHC_TEST=马克斯 ./environment001 说
