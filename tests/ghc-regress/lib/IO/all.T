@@ -150,6 +150,8 @@ test('encoding001',
            'encoding001.utf8.utf32le']), 
      compile_and_run, [''])
 
+test('encoding002', normal, compile_and_run, [''])
+
 test('newline001', extra_clean(['newline001.out']), compile_and_run, [''])
 
 test('openTempFile001', normal, compile_and_run, [''])
