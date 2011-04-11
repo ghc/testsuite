@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 def expect_fail_if_windows(opts):
    f = if_platform('i386-unknown-mingw32', expect_fail);
@@ -117,6 +118,7 @@ test('concio001.thr', skip, run_command, ['$MAKE -s --no-print-directory test.co
 test('concio002', reqlib('process'), compile_and_run, [''])
 
 test('2122', extra_clean(['2122-test']), compile_and_run, [''])
+test('3307', extra_clean(['chinese-file-小说', 'chinese-name']), run_command, ['$MAKE -s --no-print-directory 3307-test'])
 
 test('hSetEncoding001',extra_run_opts('hSetEncoding001.in'), compile_and_run, [''])
 test('decodingerror001',normal, compile_and_run, [''])
