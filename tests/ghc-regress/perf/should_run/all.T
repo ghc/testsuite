@@ -89,3 +89,34 @@ test('MethSharing',
       ],
      compile_and_run,
      ['-O'])
+test('T2902',
+     extra_clean(['T2902_A',    'T2902_B',
+                  'T2902_A.hi', 'T2902_B.hi',
+                  'T2902_A.o',  'T2902_B.o',
+                  'T2902_A_PairingSum.hi', 'T2902_B_PairingSum.hi',
+                  'T2902_A_PairingSum.o',  'T2902_B_PairingSum.o',
+                  'T2902_Sum.hi',
+                  'T2902_Sum.o']),
+     run_command,
+     ['$MAKE -s --no-print-directory T2902'])
+test('T149',
+     [expect_broken(149),
+      extra_clean(['T149_A',    'T149_B',
+                   'T149_A.hi', 'T149_B.hi',
+                   'T149_A.o',  'T149_B.o'])],
+     run_command,
+     ['$MAKE -s --no-print-directory T149'])
+
+test('T5113',
+     [
+      if_wordsize(32,
+          stats_num_field('bytes allocated', 3000000,
+                                             5000000)),
+      if_wordsize(64,
+          stats_num_field('bytes allocated', 8000000,
+                                             9000000)),
+      only_ways(['normal'])
+      ],
+     compile_and_run,
+     ['-O'])
+
