@@ -81,3 +81,7 @@ test('mc13', normal, compile_fail, [''])
 test('mc14', normal, compile_fail, [''])
 test('T5211', normal, compile, [''])  # Warnings only
 test('T1595a', normal, compile_fail, [''])
+test('T5372',
+     extra_clean(['T5372a.hi', 'T5372a.o']),
+     multimod_compile_fail,
+     ['T5372','-v0'])
