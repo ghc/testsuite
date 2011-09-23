@@ -126,6 +126,7 @@ test('4855', normal, compile_and_run, [''])
 
 test('hSetEncoding001',extra_run_opts('hSetEncoding001.in'), compile_and_run, [''])
 test('decodingerror001',normal, compile_and_run, [''])
+test('decodingerror002',normal, compile_and_run, [''])
 
 test('encoding001',
      extra_clean([
