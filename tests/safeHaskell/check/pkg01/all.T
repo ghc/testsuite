@@ -14,11 +14,11 @@ test('safePkg01',
      run_command, 
      ['$MAKE -s --no-print-directory safePkg01 PROF=' + prof])
 
-test('ImpSafe01', normal, compile_fail, [''])
+test('ImpSafe01', normal, compile, [''])
 
 test('ImpSafeOnly01', [normal, alone], compile, ['-package-conf local.db -trust base'])
 
 test('ImpSafeOnly02', [normal, alone], compile, ['-package-conf local.db -trust base -trust safePkg01'])
 
-test('ImpSafeOnly03', [normal, alone], compile_fail, ['-package-conf local.db -trust base'])
+test('ImpSafeOnly03', [normal, alone], compile, ['-package-conf local.db -trust base'])
 
