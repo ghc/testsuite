@@ -1,9 +1,9 @@
 
 tc211.hs:15:22:
     Couldn't match expected type `a -> a'
-                with actual type `forall a1. a1 -> a1'
-      Expected type: [a -> a]
-        Actual type: [forall a1. a1 -> a1]
+                with actual type `forall a. a -> a'
+    Expected type: [a -> a]
+      Actual type: [forall a. a -> a]
     In the first argument of `head', namely `foo'
     In the first argument of `(:) ::
                                 (forall a. a -> a)
@@ -12,14 +12,11 @@ tc211.hs:15:22:
 
 tc211.hs:70:9:
     Couldn't match expected type `a -> a'
-                with actual type `forall a1. a1 -> a1'
-      Expected type: List (forall a1. a1 -> a1)
-                     -> (forall a1. a1 -> a1)
-                     -> a
-                     -> a
-        Actual type: List (forall a1. a1 -> a1)
-                     -> (forall a1. a1 -> a1)
-                     -> forall a1. a1 -> a1
+                with actual type `forall a. a -> a'
+    Expected type: List (forall a1. a1 -> a1)
+                   -> (forall a1. a1 -> a1) -> a -> a
+      Actual type: List (forall a. a -> a)
+                   -> (forall a. a -> a) -> forall a. a -> a
     In the expression:
         foo2 ::
           List (forall a. a -> a) -> (forall a. a -> a) -> (forall a. a -> a)

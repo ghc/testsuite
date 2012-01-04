@@ -1,6 +1,6 @@
 
 mc21.hs:12:26:
-    Couldn't match type `a' with `[a]'
+    Couldn't match expected type `a' with actual type `[a]'
       `a' is a rigid type variable bound by
           a type expected by the context: [a] -> [[a]] at mc21.hs:12:9
     Expected type: [a] -> [[a]]

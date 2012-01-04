@@ -1,6 +1,6 @@
 
 T2714.hs:8:5:
-    Couldn't match type `a' with `f0 b'
+    Couldn't match expected type `a' with actual type `f0 b'
       `a' is a rigid type variable bound by
           the type signature for f :: ((a -> b) -> b) -> forall c. c -> a
           at T2714.hs:8:1

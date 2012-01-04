@@ -1,6 +1,6 @@
 
 SimpleFail5a.hs:31:11:
-    Couldn't match type `a' with `Int'
+    Couldn't match expected type `a' with actual type `Int'
       `a' is a rigid type variable bound by
           the type signature for bar3wrong :: S3 a -> a
           at SimpleFail5a.hs:31:1

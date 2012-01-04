@@ -1,0 +1,10 @@
+
+tcfail080.hs:27:1:
+    Ambiguous type variable `c0' in the constraint:
+      (Collection c0 a) arising from the ambiguity check for `q'
+    Probable fix: add a type signature that fixes these type variable(s)
+    When checking that `q'
+      has the inferred type `forall (c :: * -> *) a.
+                             Collection c a =>
+                             a -> Bool'
+    Probable cause: the inferred type is ambiguous

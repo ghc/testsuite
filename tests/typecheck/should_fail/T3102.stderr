@@ -1,6 +1,6 @@
 
 T3102.hs:11:12:
-    Couldn't match type `a' with `(?p::Int) => a0'
+    Couldn't match expected type `a' with actual type `(?p::Int) => a0'
       `a' is a rigid type variable bound by
           a type expected by the context: a -> String at T3102.hs:11:10
     Expected type: a -> String

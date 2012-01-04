@@ -1,6 +1,6 @@
 
 mc22.hs:10:26:
-    Couldn't match type `a' with `t0 a'
+    Couldn't match expected type `a' with actual type `t0 a'
       `a' is a rigid type variable bound by
           a type expected by the context: [a] -> [t0 a] at mc22.hs:10:9
     Expected type: [a] -> [t0 a]

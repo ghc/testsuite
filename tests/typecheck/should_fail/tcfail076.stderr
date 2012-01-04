@@ -1,12 +1,12 @@
 
 tcfail076.hs:18:82:
-    Couldn't match type `res' with `res1'
-      `res' is a rigid type variable bound by
-            a type expected by the context: (a -> m res) -> m res
-            at tcfail076.hs:18:28
+    Couldn't match expected type `res1' with actual type `res'
       `res1' is a rigid type variable bound by
              a type expected by the context: (b -> m res1) -> m res1
              at tcfail076.hs:18:64
+      `res' is a rigid type variable bound by
+            a type expected by the context: (a -> m res) -> m res
+            at tcfail076.hs:18:28
     Expected type: m res1
       Actual type: m res
     In the return type of a call of `cont'

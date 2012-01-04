@@ -12,7 +12,7 @@ T3208b.hs:15:10:
     In an equation for fce': fce' f = fce (apply f)
 
 T3208b.hs:15:15:
-    Could not deduce (OTerm a0 ~ STerm a)
+    Could not deduce (STerm a ~ OTerm a0)
     from the context (OTerm a ~ STerm a, OBJECT a, SUBST a)
       bound by the type signature for
                  fce' :: (OTerm a ~ STerm a, OBJECT a, SUBST a) => a -> c

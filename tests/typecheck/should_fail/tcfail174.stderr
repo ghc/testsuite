@@ -7,7 +7,7 @@ tcfail174.hs:9:10:
     In an equation for `g': g = Base id
 
 tcfail174.hs:13:14:
-    Couldn't match type `a' with `a1'
+    Couldn't match expected type `a' with actual type `a1'
       `a' is a rigid type variable bound by
           the inferred type of h1 :: Capture a at tcfail174.hs:13:1
       `a1' is a rigid type variable bound by
@@ -18,11 +18,11 @@ tcfail174.hs:13:14:
     In the expression: Capture g
 
 tcfail174.hs:16:14:
-    Couldn't match type `a' with `b'
-      `a' is a rigid type variable bound by
-          the type forall a. a -> a at tcfail174.hs:16:14
+    Couldn't match expected type `b' with actual type `a'
       `b' is a rigid type variable bound by
           the type signature for h2 :: Capture b at tcfail174.hs:16:1
+      `a' is a rigid type variable bound by
+          the type forall a. a -> a at tcfail174.hs:16:14
     Expected type: Capture (forall x. x -> b)
       Actual type: Capture (forall a. a -> a)
     In the first argument of `Capture', namely `g'

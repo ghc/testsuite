@@ -1,6 +1,6 @@
 
 Simple14.hs:17:12:
-    Couldn't match type `z0' with `n'
+    Couldn't match expected type `z0' with actual type `n'
       `z0' is untouchable
            inside the constraints (Maybe m ~ Maybe n)
            bound at a type expected by the context:
