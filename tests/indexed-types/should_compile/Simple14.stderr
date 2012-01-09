@@ -8,6 +8,8 @@ Simple14.hs:17:12:
       `n' is a rigid type variable bound by
           the type signature for foo :: EQ_ (Maybe m) (Maybe n)
           at Simple14.hs:17:1
+    The type variable `z0' is ambiguous
+    Possible fix: add a type signature that fixes these type variable(s)
     In the second argument of `eqE', namely `(eqI :: EQ_ m n)'
     In the first argument of `ntI', namely `(`eqE` (eqI :: EQ_ m n))'
     In the expression: ntI (`eqE` (eqI :: EQ_ m n))

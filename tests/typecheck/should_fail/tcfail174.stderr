@@ -11,7 +11,7 @@ tcfail174.hs:13:14:
       `a' is a rigid type variable bound by
           the inferred type of h1 :: Capture a at tcfail174.hs:13:1
       `a1' is a rigid type variable bound by
-           the type forall a. a -> a at tcfail174.hs:13:14
+           the type forall a1. a1 -> a1 at tcfail174.hs:13:14
     Expected type: Capture (forall x. x -> a)
       Actual type: Capture (forall a. a -> a)
     In the first argument of `Capture', namely `g'

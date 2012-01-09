@@ -1,7 +1,12 @@
 
 T4272.hs:11:16:
-    Occurs check: cannot construct the infinite type:
-      a0 = TermFamily a0 a0
+    Couldn't match type `TermFamily (TermFamily x0 x0)'
+                  with `TermFamily x0'
+    NB: `TermFamily' is a type function, and may not be injective
+    Expected type: TermFamily x0 x0
+      Actual type: TermFamily a a
+    The type variable `x0' is ambiguous
+    Possible fix: add a type signature that fixes these type variable(s)
     In the first argument of `prune', namely `t'
     In the expression: prune t (terms (undefined :: TermFamily a a))
     In an equation for `laws':

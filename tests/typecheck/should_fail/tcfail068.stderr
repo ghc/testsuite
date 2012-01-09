@@ -12,8 +12,8 @@ tcfail068.hs:14:9:
       `s1' is a rigid type variable bound by
            a type expected by the context: GHC.ST.ST s1 (IndTree s a)
            at tcfail068.hs:13:9
-    Expected type: GHC.ST.ST s (IndTree s1 a)
-      Actual type: GHC.ST.ST s (STArray s (Int, Int) a)
+    Expected type: GHC.ST.ST s1 (IndTree s a)
+      Actual type: GHC.ST.ST s1 (STArray s1 (Int, Int) a)
     In the return type of a call of `newSTArray'
     In the first argument of `runST', namely
       `(newSTArray ((1, 1), n) x)'
