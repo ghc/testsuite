@@ -15,6 +15,6 @@ test('PolyKinds04', normal, compile_fail, [''])
 test('PolyKinds06', normal, compile_fail, [''])
 test('PolyKinds07', normal, compile_fail, [''])
 
-test('PolyKinds12', expect_fail, compile, [''])
+test('PolyKinds12', normal, compile, [''])
 
 test('T5798', normal, compile, [''])
