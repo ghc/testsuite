@@ -9,6 +9,6 @@ tcfail032.hs:14:8:
       at tcfail032.hs:14:8-30
       `t' is a rigid type variable bound by
           the inferred type of f :: Eq a => t -> a -> Int
-          at tcfail032.hs:14:1
+          at tcfail032.hs:14:1-31
     In the expression: (x :: Eq a => a -> Int)
     In an equation for `f': f x = (x :: Eq a => a -> Int)
