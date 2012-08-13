@@ -4,3 +4,8 @@ SimpleFail2a.hs:11:3:
     Found `a' but expected `Int'
     In the data instance declaration for `Sd'
     In the instance declaration for `C Int'
+
+SimpleFail2a.hs:11:11:
+    Conflicting family instance declarations:
+      data Sd a -- Defined at SimpleFail2a.hs:11:11
+      data Sd Int -- Defined at SimpleFail2a.hs:12:11
