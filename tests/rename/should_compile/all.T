@@ -192,3 +192,5 @@ test('T5867',
 test('T6027', normal, compile, [''])
 test('T6120', normal, compile, [''])
 test('T7007', normal, compile, [''])
+test('T7145a', normal, compile, ['-Wall -Werror'])
+test('T7145b', normal, compile, ['-Wall'])
