@@ -32,9 +32,10 @@ test('haddock.Cabal',
                                                       205))
                                         # 2012-08-14: 204 (amd64/Linux)
      ,if_wordsize(32,
-          stats_num_field('peak_megabytes_allocated', 115,
+          stats_num_field('peak_megabytes_allocated', 112,
                                                       117))
                                         # 2012-08-14: 116 (x86/OSX)
+                                        # 2112-08-15: 113 (x86/Linux)
      ,if_wordsize(64,
           stats_range_field('max_bytes_used', 74901488, 1))
                                 # 2012-08-14: 74901488 (amd64/Linux)
@@ -58,9 +59,10 @@ test('haddock.compiler',
                                                       1199))
                                         # 2012-08-14: 1198 (amd64/Linux)
      ,if_wordsize(32,
-          stats_num_field('peak_megabytes_allocated', 630,
+          stats_num_field('peak_megabytes_allocated', 625,
                                                       632))
                                         # 2012-08-14: 631 (x86/OSX)
+                                        # 2012-08-15: 628 (x86/Linux)
      ,if_wordsize(64,
           stats_range_field('max_bytes_used', 427111776, 1))
                                 # 2012-08-14: 427111776 (amd64/Linux)
@@ -71,8 +73,9 @@ test('haddock.compiler',
           stats_range_field('bytes allocated', 25870942672, 1))
                                  # 2012-08-14: 25870942672 (amd64/Linux)
      ,if_wordsize(32,
-          stats_range_field('bytes allocated', 13471797488, 1))
+          stats_range_field('bytes allocated', 13471797488, 5))
                                  # 2012-08-14: 13471797488 (x86/OSX)
+                                 # 2012-08-15: 12982397712 (x86/Linux)
       ],
      stats,
      ['../../../../compiler/stage2/doc/html/ghc/ghc.haddock.t'])
