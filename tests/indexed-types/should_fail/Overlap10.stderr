@@ -1,0 +1,5 @@
+
+Overlap10.hs:11:5:
+    Couldn't match expected type `F a Bool' with actual type `Bool'
+    In the expression: False
+    In an equation for `g': g = False

@@ -1,0 +1,9 @@
+
+Overlap9.hs:11:7:
+    Could not deduce (F a ~ Int)
+    from the context (Show a)
+      bound by the type signature for g :: Show a => a -> F a
+      at Overlap9.hs:10:6-23
+    In the return type of a call of `length'
+    In the expression: length (show x)
+    In an equation for `g': g x = length (show x)
