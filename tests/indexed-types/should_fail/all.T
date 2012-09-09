@@ -83,3 +83,5 @@ test('Overlap7', normal, compile_fail, [''])
 test('Overlap8', normal, compile_fail, [''])
 test('Overlap9', normal, compile_fail, [''])
 test('Overlap10', normal, compile_fail, [''])
+test('T7194', expect_broken(7194), compile_fail, [''])
+
