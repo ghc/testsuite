@@ -3,8 +3,8 @@ test('haddock.base',
      [unless_in_tree_compiler(skip)
      ,if_wordsize(64,
           stats_num_field('peak_megabytes_allocated', 243,
-                                                      245))
-                                        # 2012-08-14: 244 (amd64/Linux)
+                                                      255))
+                                        # 2012-11-01: 251 (amd64/Linux)
      ,if_wordsize(32,
           stats_num_field('peak_megabytes_allocated', 142,
                                                       143))
@@ -56,8 +56,8 @@ test('haddock.compiler',
      [unless_in_tree_compiler(skip)
      ,if_wordsize(64,
           stats_num_field('peak_megabytes_allocated', 1197,
-                                                      1199))
-                                        # 2012-08-14: 1198 (amd64/Linux)
+                                                      1205))
+                                        # 2012-11-01: 1202 (amd64/Linux)
      ,if_wordsize(32,
           stats_num_field('peak_megabytes_allocated', 625,
                                                       632))
