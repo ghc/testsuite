@@ -202,4 +202,8 @@ test('Overlap2', normal, compile, [''])
 test('Overlap5', normal, compile, [''])
 test('Overlap11', normal, compile, [''])
 test('T7156', normal, compile, [''])
+test('T5591a', normal, compile, [''])
+test('T5591b', normal, compile, [''])
+test('T7280', normal, compile, [''])
+
 
