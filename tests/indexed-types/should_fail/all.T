@@ -78,6 +78,8 @@ test('T6123', normal, compile_fail, [''])
 test('ExtraTcsUntch', normal, compile_fail, [''])
 test('T7010', normal, compile_fail, [''])
 
+test('Overlap3', normal, compile_fail, [''])
+test('Overlap4', normal, compile_fail, [''])
 test('Overlap6', normal, compile_fail, [''])
 test('Overlap7', normal, compile_fail, [''])
 test('Overlap8', normal, compile_fail, [''])

@@ -199,8 +199,6 @@ test('T7082', normal, compile, [''])
 
 test('Overlap1', normal, compile, [''])
 test('Overlap2', normal, compile, [''])
-test('Overlap3', normal, compile, [''])
-test('Overlap4', normal, compile, [''])
 test('Overlap5', normal, compile, [''])
 test('Overlap11', normal, compile, [''])
 test('T7156', normal, compile, [''])
