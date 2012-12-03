@@ -80,11 +80,13 @@ test('T7010', normal, compile_fail, [''])
 
 test('Overlap3', normal, compile_fail, [''])
 test('Overlap4', normal, compile_fail, [''])
+test('Overlap5', normal, compile_fail, [''])
 test('Overlap6', normal, compile_fail, [''])
 test('Overlap7', normal, compile_fail, [''])
 test('Overlap8', normal, compile_fail, [''])
 test('Overlap9', normal, compile_fail, [''])
 test('Overlap10', normal, compile_fail, [''])
+test('Overlap11', normal, compile_fail, [''])
 test('T7194', normal, compile_fail, [''])
 test('T7354', normal, compile_fail, [''])
 test('T7354a',
