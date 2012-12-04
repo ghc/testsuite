@@ -254,3 +254,9 @@ test('T7092', extra_clean(['T7092a.hi','T7092a.o']),
               multimod_compile, ['T7092','-v0'])
 test('T7276', normal, compile_fail, ['-v0'])
 test('T7276a', combined_output, ghci_script, ['T7276a.script'])
+
+test('TH_TyInstWhere1', normal, compile, ['-v0 -ddump-splices -dsuppress-uniques'])
+test('TH_TyInstWhere2', normal, compile, ['-v0'])
+test('TH_TyInstWhere3', normal, compile, ['-v0'])
+test('TH_TyInstWhere4', normal, compile, ['-v0'])
+
