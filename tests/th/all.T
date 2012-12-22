@@ -260,3 +260,6 @@ test('TH_TyInstWhere2', normal, compile, ['-v0'])
 test('TH_TyInstWhere3', normal, compile, ['-v0'])
 test('TH_TyInstWhere4', normal, compile, ['-v0'])
 
+test('T7445', extra_clean(['T7445a.hi', 'T7445a.o']),
+	      run_command,
+	      ['$MAKE -s --no-print-directory T7445'] )
