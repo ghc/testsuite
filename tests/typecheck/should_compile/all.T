@@ -395,3 +395,10 @@ test('holes2', normal, compile, ['-fdefer-type-errors'])
 test('holes3', normal, compile_fail, [''])
 test('T7408', normal, compile, [''])
 test('UnboxStrictPrimitiveFields', normal, compile, [''])
+test('TypeNatBasics', normal, compile, [''])
+test('TypeNatAC', normal, compile, [''])
+test('TypeNatVec', normal, compile, [''])
+test('TypeNatNat1', normal, compile, [''])
+
+
+
