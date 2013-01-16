@@ -10,3 +10,4 @@ test('ghc-e005', req_interp, run_command, ['$MAKE --no-print-directory -s ghc-e0
 test('2228', req_interp, run_command, ['$MAKE --no-print-directory -s 2228'])
 test('2636', req_interp, run_command, ['$MAKE --no-print-directory -s 2636'])
 test('3890', req_interp, run_command, ['$MAKE --no-print-directory -s 3890'])
+test('T7299', req_interp, run_command, ['$MAKE --no-print-directory -s T7299'])
