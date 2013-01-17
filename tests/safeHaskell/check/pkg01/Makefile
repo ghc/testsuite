@@ -20,9 +20,9 @@ mkPackageDatabase.%:
 #     Warning: -rtsopts and -with-rtsopts have no effect with -shared.
 # so we filter the flag out
 	pdb.$*/setup configure -v0 --dist pdb.$*/dist --prefix='$(HERE)/pdb.$*/install' --with-compiler='$(TEST_HC)' --ghc-options='$(filter-out -rtsopts,$(TEST_HC_OPTS)) -fpackage-trust -trust base -trust bytestring' --with-hc-pkg='$(GHC_PKG)' --package-db='pdb.$*/local.db' $(PROF)
-	./setup build    -v0 --dist pdb.$*/dist
-	./setup copy     -v0 --dist pdb.$*/dist
-	./setup register -v0 --dist pdb.$*/dist  --inplace
+	pdb.$*/setup build    -v0 --dist pdb.$*/dist
+	pdb.$*/setup copy     -v0 --dist pdb.$*/dist
+	pdb.$*/setup register -v0 --dist pdb.$*/dist  --inplace
 
 # We use the global package database as there's no easy way to tell
 # ghc-pkg (via Cabal) to use one in ., and the global one at least
