@@ -1,0 +1,8 @@
+Warning: -rtsopts and -with-rtsopts have no effect with -shared.
+    Call hs_init_ghc() from your main() function to set these options.
+Creating library file: HS4464.dll.a
+ghcDll: Most RTS options are disabled. Link with -rtsopts to enable them.
+=====
+Warning: -rtsopts and -with-rtsopts have no effect with -shared.
+    Call hs_init_ghc() from your main() function to set these options.
+Creating library file: HS4464.dll.a
