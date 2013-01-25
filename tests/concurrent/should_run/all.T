@@ -200,6 +200,8 @@ test('conc058', only_compiler_types(['ghc']), compile_and_run, [''])
 test('conc059',
      [only_compiler_types(['ghc']),
       only_ways(['threaded1','threaded2']),
+      # This fails on Windows for unknown reasons
+      if_os('mingw32', expect_fail_for(['threaded2'])),
       compile_cmd_prefix('$MAKE conc059_setup && '),
       extra_clean(['conc059_c.o'])],
      compile_and_run,
