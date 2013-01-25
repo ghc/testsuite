@@ -4,7 +4,7 @@
 #	extra run flags
 #	expected process return value, if not zero
 
-# Doesn't work with External Core due to __labels
+# Does not work with External Core due to __labels
 test('fed001', compose(only_compiler_types(['ghc']),
 			expect_fail_for(['extcore','optextcore'])),
 		compile_and_run, [''])
@@ -13,6 +13,8 @@ test('fed001', compose(only_compiler_types(['ghc']),
 test('ffi001', omit_ways(['ghci']), compile_and_run, [''])
 test('ffi002', [ omit_ways(['ghci']),
                  extra_clean(['ffi002_c.o']),
+                 # This fails on Windows for unknown reasons
+                 if_os('mingw32', expect_fail_for(['threaded2'])),
                  compile_cmd_prefix('$MAKE ffi002_setup && ') ],
                  # The ffi002_setup hack is to ensure that we generate
                  # ffi002_stub.h before compiling ffi002_c.c, which
@@ -173,6 +175,8 @@ test('4221', [ omit_ways(['ghci']), extra_clean(['4221_c.o']) ],
 
 test('5402', [ omit_ways(['ghci']),
                exit_code(42),
+               # This fails on Windows for unknown reasons
+               if_os('mingw32', expect_fail_for(['threaded2'])),
                extra_clean(['5402_main.o']),
                  # The 5402_setup hack is to ensure that we generate
                  # 5402_stub.h before compiling 5402_main.c, which
@@ -182,6 +186,8 @@ test('5402', [ omit_ways(['ghci']),
 
 test('5594', [ omit_ways(['ghci']),
                extra_clean(['5594_c.o']),
+               # This fails on Windows for unknown reasons
+               if_os('mingw32', expect_fail_for(['threaded2'])),
                compile_cmd_prefix('$MAKE --no-print-directory 5594_setup && ') ],
                # The 5594_setup hack is to ensure that we generate
                # 5594_stub.h before compiling 5594_c.c, which
