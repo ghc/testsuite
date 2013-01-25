@@ -18,11 +18,13 @@ test('derefnull',
              exit_code(139),
              # Apparently the output can be different on different
              # Linux setups, so just ignore it. As long as we get
-             # the right exit code we're OK.
+             # the right exit code we are OK.
              if_os('linux', ignore_output),
              # SIGBUS on OX X (PPC and x86 only; amd64 gives SEGV)
              if_platform('i386-apple-darwin', exit_code(138)),
              if_platform('powerpc-apple-darwin', exit_code(138)),
+             # This test fails (139) on both 7.4.1 and 7.6.2 on Win32
+             if_os('mingw32', expect_fail_for(['ghci'])),
              if_os('mingw32', exit_code(1))]),
      compile_and_run, [''])
 test('divbyzero',
@@ -32,8 +34,10 @@ test('divbyzero',
              exit_code(136),
              # Apparently the output can be different on different
              # Linux setups, so just ignore it. As long as we get
-             # the right exit code we're OK.
+             # the right exit code we are OK.
              if_os('linux', ignore_output),
+             # This test fails (127) on both 7.4.1 and 7.6.2 on Win32
+             if_os('mingw32', expect_fail_for(['ghci'])),
              if_os('mingw32', exit_code(1))]),
      compile_and_run, [''])
 
