@@ -311,7 +311,11 @@ test('dynHelloWorld',
      compile_and_run,
      [''])
 
-test('5313', extra_run_opts('"' + config.libdir + '"'), compile_and_run, ['-package ghc'])
+test('5313',
+     [extra_run_opts('"' + config.libdir + '"'),
+      if_os('mingw32', expect_broken_for(5987, ['dyn']))],
+     compile_and_run,
+     ['-package ghc'])
 
 test('2464', normal, compile, [''])
 test('3674',
