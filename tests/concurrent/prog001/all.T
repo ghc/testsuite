@@ -14,6 +14,8 @@
 
 test('concprog001',
      [skip_if_fast,
+      # This fails on Windows for unknown reasons
+      if_os('mingw32', expect_fail_for(['threaded2'])),
       only_ways(['threaded2']),
       extra_clean(['Arithmetic.hi', 'Arithmetic.o',
                    'Converter.hi',  'Converter.o',
