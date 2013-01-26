@@ -105,7 +105,13 @@ test('ffi015', [ omit_ways(['ghci']), extra_clean(['ffi015_cbits.o']) ],
 # GHCi can't handle foreign import "&"
 test('ffi016', omit_ways(['ghci']), compile_and_run, [''])
 
-test('ffi017', normal, compile_and_run, [''])
+test('ffi017',
+     # On Win64 this fails for the ghci way with:
+     # During interactive linking, GHCi couldn't find the following symbol:
+     # lseek
+     if_platform('x86_64-unknown-mingw32', expect_fail_for(['ghci'])),
+     compile_and_run,
+     [''])
 
 test('ffi018', [ omit_ways(['ghci']), extra_clean(['ffi018_c.o']) ],
                compile_and_run, ['ffi018_c.c'])
