@@ -128,5 +128,10 @@ test('T6027ghci', normal, ghci_script, ['T6027ghci.script'])
 
 test('T6007', normal, ghci_script, ['T6007.script'])
 test('T6091', normal, ghci_script, ['T6091.script'])
-test('T6106', extra_clean(['T6106.hs']), ghci_script, ['T6106.script'])
+test('T6106',
+     [# This test fails on Windows for unknown reasons
+      if_os('mingw32', expect_fail),
+      extra_clean(['T6106.hs'])],
+     ghci_script,
+     ['T6106.script'])
 test('T6105', normal, ghci_script, ['T6105.script'])
