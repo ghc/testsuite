@@ -7,38 +7,38 @@ data S n = S
 
 -- Commutativity ---------------------------------------------------------------
 
-c1 :: S (a + b) -> S (b + a)
-c1 = id
+c1 :: S a -> S b -> S (a + b) -> S (b + a)
+c1 _ _ = id
 
-c2 :: S (a * b) -> S (b * a)
-c2 = id
+c2 :: S a -> S b -> S (a * b) -> S (b * a)
+c2 _ _ = id
 
 
 -- Associativity ---------------------------------------------------------------
 
-a1 :: S (a + (b + c)) -> S ((a + b) + c)
-a1 = id
+a1 :: S a -> S b -> S c -> S (a + (b + c)) -> S ((a + b) + c)
+a1 _ _ _ = id
 
-a2 :: S ((a + b) + c) -> S (a + (b + c))
-a2 = id
+a2 :: S a -> S b -> S c -> S ((a + b) + c) -> S (a + (b + c))
+a2 _ _ _ = id
 
 -- Combinations ----------------------------------------------------------------
 
-ac1 :: S ((a + b) + c) -> S (a + (c + b))
-ac1 = id
+ac1 :: S a -> S b -> S c -> S ((a + b) + c) -> S (a + (c + b))
+ac1 _ _ _ = id
 
-ac2 :: S ((b + a) + c) -> S (a + (b + c))
-ac2 = id
+ac2 :: S a -> S b -> S c -> S ((b + a) + c) -> S (a + (b + c))
+ac2 _ _ _ = id
 
-ac3 :: S (c + (a + b)) -> S (a + (b + c))
-ac3 = id
+ac3 :: S a -> S b -> S c -> S (c + (a + b)) -> S (a + (b + c))
+ac3 _ _ _ = id
 
-ac4 :: S ((a + b) + c) -> S ((b + c) + a)
-ac4 = id
+ac4 :: S a -> S b -> S c -> S ((a + b) + c) -> S ((b + c) + a)
+ac4 _ _ _ = id
 
-ac5 :: S ((c + b) + a) -> S (a + (b + c))
-ac5 = id
+ac5 :: S a -> S b -> S c -> S ((c + b) + a) -> S (a + (b + c))
+ac5 _ _ _ = id
 
-ac6 :: S ((a + b) + c) -> S (c + (b + a))
-ac6 = id
+ac6 :: S a -> S b -> S c -> S ((a + b) + c) -> S (c + (b + a))
+ac6 _ _ _ = id
 
