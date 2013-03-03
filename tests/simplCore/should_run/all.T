@@ -4,7 +4,7 @@
 #	expected process return value, if not zero
 
 # Only compile with optimisation
-def f( opts ):
+def f( name, opts ):
   opts.only_ways = ['optasm']
 
 setTestOpts(f)
@@ -18,8 +18,8 @@ test('simplrun005', normal, compile_and_run, [''])
 test('simplrun007', normal, compile_and_run, [''])
 test('simplrun008', normal, compile_and_run, [''])
 test('simplrun009', normal, compile_and_run, [''])
-test('simplrun010', composes([extra_run_opts('24 16 8'),
-                              exit_code(1)])
+test('simplrun010', [extra_run_opts('24 16 8 +RTS -M10m -RTS'),
+                     exit_code(251)]
                   , compile_and_run, [''])
 
 # Really we'd like to run T2486 too, to check that its

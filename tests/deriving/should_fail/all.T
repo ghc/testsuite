@@ -8,7 +8,6 @@ test('drvfail006', reqlib('mtl'), compile_fail, [''])
 test('drvfail007', normal, compile_fail, [''])
 test('drvfail008', reqlib('mtl'), compile_fail, [''])
 test('drvfail009', normal, compile_fail, [''])
-test('drvfail010', normal, compile_fail, [''])
 test('drvfail011', normal, compile_fail, [''])
 test('drvfail012', normal, compile_fail, [''])
 test('drvfail013', normal, compile_fail, [''])
@@ -36,4 +35,7 @@ test('T5287', normal, compile_fail, [''])
 test('T5478', normal, compile_fail, [''])
 test('T5686', normal, compile_fail, [''])
 test('T5922', normal, compile_fail, [''])
-
+test('T1133A',
+     extra_clean(['T1133A.o-boot', 'T1133A.hi-boot']),
+     run_command,
+     ['$MAKE --no-print-directory -s T1133A'])

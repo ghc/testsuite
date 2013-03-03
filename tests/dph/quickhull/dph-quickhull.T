@@ -2,19 +2,19 @@
 test    ('dph-quickhull-copy-opt' 
         , [ high_memory_usage
           , outputdir('copy-opt')
-          , skip_if_fast
+          , when(fast(), skip)
           , reqlib('dph-lifted-copy')
           , reqlib('dph-prim-par')
           , only_ways(['normal', 'threaded1', 'threaded2']) ] 
         , multimod_compile_and_run 
         , [ 'Main'
-          , '-Odph -funfolding-use-threshold30 -package dph-lifted-copy -package dph-prim-par'])
+          , '-Odph -fno-vectorisation-avoidance -funfolding-use-threshold30 -package dph-lifted-copy -package dph-prim-par'])
 
 
 test    ('dph-quickhull-vseg-opt' 
         , [ high_memory_usage
           , outputdir('vseg-opt')
-          , skip_if_fast
+          , when(fast(), skip)
           , reqlib('dph-lifted-vseg')
           , reqlib('dph-prim-par')
           , only_ways(['normal', 'threaded1', 'threaded2']) ] 
@@ -30,7 +30,7 @@ test    ('dph-quickhull-copy-fast'
           , only_ways(['normal', 'threaded1', 'threaded2']) ] 
         , multimod_compile_and_run 
         , [ 'Main'
-          , '-O0 -package dph-lifted-copy -package dph-prim-par'])
+          , '-O0 -fno-vectorisation-avoidance -package dph-lifted-copy -package dph-prim-par'])
 
 
 test    ('dph-quickhull-vseg-fast' 

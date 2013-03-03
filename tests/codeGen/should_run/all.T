@@ -24,8 +24,9 @@ test('cgrun020', normal, compile_and_run, [''])
 test('cgrun021', normal, compile_and_run, [''])
 test('cgrun022', normal, compile_and_run, [''])
 test('cgrun024', normal, compile_and_run, [''])
-test('cgrun025', compose(reqlib('regex-compat'), compose(extra_run_opts('cg025.hs'),exit_code(1))),
-                      compile_and_run, ['-package regex-compat'])
+test('cgrun025',
+     [reqlib('regex-compat'), extra_run_opts('cg025.hs'), exit_code(1)],
+     compile_and_run, ['-package regex-compat'])
 test('cgrun026', only_compiler_types(['ghc']), compile_and_run, [''])
 test('cgrun027', normal, compile_and_run, [''])
 test('cgrun028', normal, compile_and_run, [''])
@@ -48,7 +49,8 @@ test('cgrun048', normal, compile_and_run, [''])
 test('cgrun049', normal, compile_and_run, ['-funbox-strict-fields'])
 test('cgrun050', normal, compile_and_run, [''])
 # Doesn't work with External Core due to datatype declaration with no constructors
-test('cgrun051', (compose (expect_fail_for(['extcore','optextcore']),exit_code(1))), compile_and_run, [''])
+test('cgrun051', [expect_fail_for(['extcore','optextcore']), exit_code(1)],
+     compile_and_run, [''])
 test('cgrun052', only_ways(['optasm']), compile_and_run, ['-funbox-strict-fields'])
 test('cgrun053', normal, compile_and_run, [''])
 test('cgrun054', normal, compile_and_run, [''])
@@ -75,23 +77,23 @@ test('cgrun069', omit_ways(['ghci']), multi_compile_and_run,
 test('cgrun070', normal, compile_and_run, [''])
 test('cgrun071', normal, compile_and_run, [''])
 
-test('1852', normal, compile_and_run, [''])
-test('1861', extra_run_opts('0'), compile_and_run, [''])
-test('2080', normal, compile_and_run, [''])
-test('2838', normal, compile_and_run, [''])
-test('3207', normal, compile_and_run, [''])
-test('3561', normal, compile_and_run, [''])
-test('3677', extra_run_opts('+RTS -K8k -RTS'), compile_and_run, [''])
-test('4441', normal, compile_and_run, [''])
-test('5149', omit_ways(['ghci']), multi_compile_and_run,
-                 ['5149', [('5149_cmm.cmm', '')], ''])
-test('5129', normal, compile_and_run, [''])
-test('5626', exit_code(1), compile_and_run, [''])
-test('5747', if_arch('i386', extra_hc_opts('-msse2')), compile_and_run, ['-O2'])
-test('5785', normal, compile_and_run, [''])
+test('T1852', normal, compile_and_run, [''])
+test('T1861', extra_run_opts('0'), compile_and_run, [''])
+test('T2080', normal, compile_and_run, [''])
+test('T2838', normal, compile_and_run, [''])
+test('T3207', normal, compile_and_run, [''])
+test('T3561', normal, compile_and_run, [''])
+test('T3677', extra_run_opts('+RTS -K8k -RTS'), compile_and_run, [''])
+test('T4441', normal, compile_and_run, [''])
+test('T5149', omit_ways(['ghci']), multi_compile_and_run,
+                 ['T5149', [('T5149_cmm.cmm', '')], ''])
+test('T5129', normal, compile_and_run, [''])
+test('T5626', exit_code(1), compile_and_run, [''])
+test('T5747', when(arch('i386'), extra_hc_opts('-msse2')), compile_and_run, ['-O2'])
+test('T5785', normal, compile_and_run, [''])
 test('setByteArray', normal, compile_and_run, [''])
 
-test('6146', normal, compile_and_run, [''])
+test('T6146', normal, compile_and_run, [''])
 test('T5900', normal, compile_and_run, [''])
 test('T7163', normal, compile_and_run, [''])
 
@@ -100,7 +102,9 @@ test('T7319', [ extra_ways(['prof']), only_ways(['prof']), exit_code(1),
                 req_profiling,
                 extra_hc_opts('-fprof-auto'),
                 extra_run_opts('+RTS -xc') ], compile_and_run, [''])
-test('Word2Float32', unless_wordsize(32, skip), compile_and_run, [''])
-test('Word2Float64', unless_wordsize(64, skip), compile_and_run, [''])
+test('Word2Float32', unless(wordsize(32), skip), compile_and_run, [''])
+test('Word2Float64', unless(wordsize(64), skip), compile_and_run, [''])
 
 test('T7361', normal, compile_and_run, [''])
+test('T7600', normal, compile_and_run, [''])
+

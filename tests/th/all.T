@@ -1,9 +1,9 @@
 
 # This test needs to come before the setTestOpts calls below, as we want
-# to run it !if_compiler_profiled
-test('T4255', unless_compiler_profiled(skip), compile_fail, ['-v0'])
+# to run it if !compiler_profiled
+test('T4255', unless(compiler_profiled(), skip), compile_fail, ['-v0'])
 
-def f(opts):
+def f(name, opts):
   opts.extra_hc_opts = '-XTemplateHaskell -package template-haskell'
   if (ghc_with_interpreter == 0):
 	opts.skip = 1
@@ -11,7 +11,7 @@ def f(opts):
 setTestOpts(f)
 setTestOpts(only_compiler_types(['ghc']))
 setTestOpts(only_ways(['normal','ghci']))
-setTestOpts(if_compiler_profiled(skip))
+setTestOpts(when(compiler_profiled(), skip))
 
 test('TH_mkName', normal, compile, ['-v0'])
 test('TH_1tuple', normal, compile_fail, ['-v0'])
@@ -138,7 +138,7 @@ test('T2817', normal, compile, ['-v0'])
 test('T2713', normal, compile_fail, ['-v0'])
 test('T2674', normal, compile_fail, ['-v0'])
 test('T2931', normal, compile, ['-v0'])
-test('TH_emptycase', normal, compile_fail, ['-v0'])
+test('TH_emptycase', normal, compile, ['-v0'])
 
 test('T2386', extra_clean(['T2386_Lib.hi', 'T2386_Lib.o']),
 	      run_command,
@@ -267,3 +267,6 @@ test('T7532',
      extra_clean(['T7532a.hi', 'T7532a.o']),
      multimod_compile,
      ['T7532', '-v0'])
+test('T2222', normal, compile, ['-v0'])
+test('T1849', normal, ghci_script, ['T1849.script'])
+test('T7681', normal, compile, ['-v0'])

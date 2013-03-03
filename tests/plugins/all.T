@@ -1,9 +1,9 @@
-def f(opts):
+def f(name, opts):
   if (ghc_with_interpreter == 0):
 	opts.skip = 1
 
 setTestOpts(f)
-setTestOpts(if_compiler_lt('ghc', '7.1', skip))
+setTestOpts(when(compiler_lt('ghc', '7.1'), skip))
 
 test('plugins01',
      [pre_cmd('$MAKE -s --no-print-directory -C simple-plugin package.plugins01'),
