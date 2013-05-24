@@ -1,6 +1,6 @@
 
 test('jtod_circint',
-     [when(fast(), skip),
+     [skip_if_fast,
       extra_clean(['Bit.hi',    'Bit.o',
                    'LogFun.hi', 'LogFun.o',
                    'Main.hi',   'Main.o',

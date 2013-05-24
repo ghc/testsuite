@@ -1,6 +1,8 @@
 {-# LANGUAGE TypeHoles #-}
 
-module Holes where
+module Main where
+
+main = return ()
 
 f = _
 

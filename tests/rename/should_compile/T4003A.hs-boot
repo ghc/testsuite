@@ -4,5 +4,5 @@ import Data.Data
 
 data HsExpr i
 
-instance Typeable HsExpr
+instance Typeable1 HsExpr
 instance Data i => Data (HsExpr i)

@@ -2,7 +2,7 @@
 test    ('dph-words-copy-opt' 
         , [ high_memory_usage
           , outputdir('copy-opt')
-          , when(fast(), skip)
+          , skip_if_fast
           , reqlib('dph-lifted-copy')
           , reqlib('dph-prim-par')
           , only_ways(['normal']) ] 
@@ -14,7 +14,7 @@ test    ('dph-words-copy-opt'
 test    ('dph-words-vseg-opt' 
         , [ high_memory_usage
           , outputdir('vseg-opt')
-          , when(fast(), skip)
+          , skip_if_fast
           , reqlib('dph-lifted-vseg')
           , reqlib('dph-prim-par')
           , only_ways(['normal']) ] 

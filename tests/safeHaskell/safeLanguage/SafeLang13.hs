@@ -5,7 +5,7 @@
 module Main where
 
 import SafeLang13_A
-import Data.OldTypeable
+import Data.Typeable
 
 data H = H String deriving (Typeable, Show)
 

@@ -4,7 +4,6 @@ import Foreign
 import Data.IORef
 import Control.Concurrent
 import Control.Exception
-import System.IO.Unsafe
 
 foreign import ccall "wrapper"
   wrap :: IO () -> IO (FunPtr (IO ()))

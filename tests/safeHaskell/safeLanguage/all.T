@@ -4,7 +4,7 @@
 # works correctly (incluidng testing safe imports a little).
 
 # Just do the normal way, SafeHaskell is all in the frontend
-def f( name, opts ):
+def f( opts ):
   opts.only_ways = ['normal']
 
 setTestOpts(f)
@@ -36,7 +36,7 @@ test('SafeLang11',
       extra_clean(['SafeLang11_A.o', 'SafeLang11_A.hi',
                    'SafeLang11_B.o', 'SafeLang11_B.hi'])],
      multimod_compile_and_run,
-     ['SafeLang11', config.ghc_th_way_flags])
+     ['SafeLang11', ''])
 test('SafeLang12', normal, multimod_compile_fail, ['SafeLang12', ''])
 test('SafeLang13',
      extra_clean(['SafeLang13_A.o', 'SafeLang13_A.hi']),

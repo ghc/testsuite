@@ -1,4 +1,4 @@
-{-# LANGUAGE ExistentialQuantification, DeriveDataTypeable #-}
+{-# LANGUAGE ExistentialQuantification #-}
 
 -- The second version (count2) took ages with GHC 6.12
 -- because the typeOf function was not properly memoised
@@ -44,4 +44,7 @@ main = do
   doTime $ count1 x
   doTime $ count1 x
 
-data T = MkT deriving Typeable
+data T = MkT
+tcname :: TyCon
+tcname = mkTyCon "T"
+instance Typeable T where { typeOf _ = mkTyConApp tcname [] }

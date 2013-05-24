@@ -4,5 +4,5 @@
 
 module T7488 where
 
-newtype A = A Bool
+newtype A = A Int
 data B (x :: A)

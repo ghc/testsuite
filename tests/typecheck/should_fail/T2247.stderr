@@ -1,6 +1,0 @@
-
-T2247.hs:6:10:
-    Illegal instance declaration for ‛FD a b’
-      Multiple uses of this instance may be inconsistent
-      with the functional dependencies of the class.
-    In the instance declaration for ‛FD a b’

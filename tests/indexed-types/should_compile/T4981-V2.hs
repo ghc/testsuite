@@ -27,5 +27,5 @@ joinPatches = id
 
 cleverNamedResolve :: (Conflict (OnPrim p)
                       ,PrimOf (OnPrim p) ~ WithName (PrimOf p))
-                   => p -> FL (OnPrim p) -> WithName (PrimOf p)
-cleverNamedResolve x = resolveConflicts . joinPatches
+                   => FL (OnPrim p) -> WithName (PrimOf p)
+cleverNamedResolve = resolveConflicts . joinPatches

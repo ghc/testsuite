@@ -1,5 +1,5 @@
 test('qq006',
-     [when(fast(), skip),
+     [skip_if_fast,
       reqlib('parsec'),
       extra_clean(['Expr.hi', 'Expr.o']),
       only_compiler_types(['ghc'])],

@@ -17,7 +17,7 @@ elif config.platform.startswith('sparc-'):
 if testFile != 'nothing':
  test   ('dph-smvm-copy'
         , [ outputdir('copy')
-          , when(fast(), skip)
+          , skip_if_fast
           , reqlib('dph-lifted-copy')
           , reqlib('dph-prim-par')
           , only_ways(['normal', 'threaded1', 'threaded2'])
@@ -29,7 +29,7 @@ if testFile != 'nothing':
 
  test   ('dph-smvm-vseg'
         , [ outputdir('vseg')
-          , when(fast(), skip)
+          , skip_if_fast
           , reqlib('dph-lifted-vseg')
           , reqlib('dph-prim-par')
           , only_ways(['normal', 'threaded1', 'threaded2'])

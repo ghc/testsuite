@@ -1,9 +1,9 @@
-def f(name, opts):
+def f(opts):
   if (ghc_with_interpreter == 0):
 	opts.skip = 1
 
 setTestOpts(f)
-setTestOpts(when(compiler_lt('ghc', '7.1'), skip))
+setTestOpts(if_compiler_lt('ghc', '7.1', skip))
 
 test('plugins01',
      [pre_cmd('$MAKE -s --no-print-directory -C simple-plugin package.plugins01'),
@@ -14,7 +14,7 @@ test('plugins02',
      [pre_cmd('$MAKE -s --no-print-directory -C simple-plugin package.plugins02'),
       clean_cmd('$MAKE -s --no-print-directory -C simple-plugin clean.plugins02')],
      compile_fail,
-     ['-package-db simple-plugin/pkg.plugins02/local.package.conf -fplugin Simple.BadlyTypedPlugin -package simple-plugin ' + config.ghci_way_flags])
+     ['-package-db simple-plugin/pkg.plugins02/local.package.conf -fplugin Simple.BadlyTypedPlugin -package simple-plugin'])
 
 test('plugins03',
      [pre_cmd('$MAKE -s --no-print-directory -C simple-plugin package.plugins03'),
@@ -29,11 +29,11 @@ test('plugins04',
 
 test('plugins05',
      [ extra_clean(['HomePackagePlugin.hi', 'HomePackagePlugin.o']),
-       only_ways([config.ghc_plugin_way]) ],
+       expect_fail_for(['dyn'] + prof_ways) ],
      multimod_compile_and_run, ['plugins05', '-package ghc'])
 
 test('plugins06',
      [ extra_clean(['LinkerTicklingPlugin.hi', 'LinkerTicklingPlugin.o']),
-       only_ways([config.ghc_plugin_way]) ],
+       expect_fail_for(['dyn'] + prof_ways) ],
      multimod_compile_and_run, ['plugins06', '-package ghc'])
 

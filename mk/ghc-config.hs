@@ -24,7 +24,6 @@ main = do
   getGhcFieldOrFail fields "GhcWithSMP" "Support SMP"
   getGhcFieldOrFail fields "GhcRTSWays" "RTS ways"
   getGhcFieldOrDefault fields "GhcDynamicByDefault" "Dynamic by default" "NO"
-  getGhcFieldOrDefault fields "GhcDynamic" "GHC Dynamic" "NO"
   getGhcFieldProgWithDefault fields "AR" "ar command" "ar"
 
   let pkgdb_flag = case lookup "Project version" fields of

@@ -1,7 +1,7 @@
 
 test    ('dph-dotp-copy-opt' 
         , [ outputdir('copy-opt')
-          , when(fast(), skip)
+          , skip_if_fast
           , reqlib('dph-lifted-copy')
           , reqlib('dph-prim-par')
           , only_ways(['normal', 'threaded1', 'threaded2']) ] 
@@ -11,7 +11,7 @@ test    ('dph-dotp-copy-opt'
 
 test    ('dph-dotp-vseg-opt' 
         , [ outputdir('vseg-opt')
-          , when(fast(), skip)
+          , skip_if_fast
           , reqlib('dph-lifted-vseg')
           , reqlib('dph-prim-par')
           , only_ways(['normal', 'threaded1', 'threaded2']) ] 

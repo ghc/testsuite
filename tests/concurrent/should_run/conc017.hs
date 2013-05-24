@@ -17,9 +17,9 @@ main = do
 	     putMVar m3 ()
 	 )
   (do 
-    mask $ \restore -> do
+    block (do
 	(do putMVar m1 () 
-            restore (
+	    unblock (
 		-- unblocked, "foo" delivered to "caught1"
 	       myDelay 100000
 	     )
@@ -30,6 +30,7 @@ main = do
 	(sum [1..10000] `seq` return ())
 	  `Control.Exception.catch` 
               \e -> putStrLn ("caught2: " ++ show (e::SomeException))
+     )
     -- unblocked here, "bar" delivered to "caught3"
     takeMVar m3
    ) 

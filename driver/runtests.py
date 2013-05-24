@@ -207,6 +207,9 @@ if windows or darwin:
 global testopts_local
 testopts_local.x = TestOptions()
 
+global thisdir_testopts
+thisdir_testopts = getThisDirTestOpts()
+
 if config.use_threads:
     t.lock = threading.Lock()
     t.thread_pool = threading.Condition(t.lock)
@@ -254,39 +257,24 @@ for file in t_files:
         t.n_framework_failures = t.n_framework_failures + 1
         traceback.print_exc()
 
-if config.list_broken:
-    global brokens
-    print ''
-    print 'Broken tests:'
-    print (' '.join(map (lambda (b, d, n) : '#' + str(b) + '(' + d + '/' + n + ')', brokens)))
-    print ''
-
-    if t.n_framework_failures != 0:
-        print 'WARNING:', str(t.n_framework_failures), 'framework failures!'
-        print ''
-else:
-    # Now run all the tests
-    if config.use_threads:
-        t.running_threads=0
-    for oneTest in parallelTests:
-        if stopping():
-            break
-        oneTest()
-    if config.use_threads:
-        t.thread_pool.acquire()
-        while t.running_threads>0:
-            t.thread_pool.wait()
-        t.thread_pool.release()
-    config.use_threads = False
-    for oneTest in aloneTests:
-        if stopping():
-            break
-        oneTest()
+# Now run all the tests
+if config.use_threads:
+    t.running_threads=0
+for oneTest in parallelTests:
+    oneTest()
+if config.use_threads:
+    t.thread_pool.acquire()
+    while t.running_threads>0:
+        t.thread_pool.wait()
+    t.thread_pool.release()
+config.use_threads = False
+for oneTest in aloneTests:
+    oneTest()
         
-    summary(t, sys.stdout)
+summary(t, sys.stdout)
 
-    if config.output_summary != '':
-        summary(t, open(config.output_summary, 'w'))
+if config.output_summary != '':
+    summary(t, open(config.output_summary, 'w'))
 
 sys.exit(0)
 

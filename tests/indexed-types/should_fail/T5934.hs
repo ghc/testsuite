@@ -1,6 +1,4 @@
-{-# LANGUAGE AllowAmbiguousTypes, RankNTypes, TypeFamilies, KindSignatures #-}
-
--- The type of 'run' is actually ambiguous
+{-# LANGUAGE RankNTypes, TypeFamilies, KindSignatures #-}
 
 module T5934 where
 import Control.Monad.ST

@@ -27,18 +27,5 @@ joinPatches = id
 
 cleverNamedResolve :: (Conflict (OnPrim p)
                       ,PrimOf (OnPrim p) ~ WithName (PrimOf p))
-                   => p -> FL (OnPrim p) -> WithName (PrimOf p)
-cleverNamedResolve x = resolveConflicts . joinPatches
--- I added the parameter 'x' to make the signature unambiguous
--- I don't think that ambiguity is essential to the original problem
-
-{-
-resolveConflicts :: q -> PrimOf q
- (w) FL (OnPrim p) ~ q
- (w) WithName (PrimOf p) ~ PrimOf q
-==>
- (w) PrimOf (OnPrim p) ~ PrimOf (FL (OnPrim p))
-==>
- (w) PrimOf (OnPrim p) ~ PrimOf (OnPrim p)
-
--}
+                   => FL (OnPrim p) -> WithName (PrimOf p)
+cleverNamedResolve = resolveConflicts . joinPatches

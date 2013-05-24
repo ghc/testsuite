@@ -12,7 +12,7 @@ test('SimpleFail5b', normal, compile_fail, [''])
 test('SimpleFail6', normal, compile_fail, [''])
 test('SimpleFail7', normal, compile_fail, [''])
 test('SimpleFail8', normal, compile_fail, [''])
-test('SimpleFail9', normal, compile, [''])
+test('SimpleFail9', normal, compile_fail, [''])
 test('SimpleFail10', normal, compile, [''])
 test('SimpleFail11a', normal, compile_fail, [''])
 test('SimpleFail11b', normal, compile_fail, [''])
@@ -41,7 +41,7 @@ test('Over',
 
 test('SkolemOccursLoop', expect_fail, compile_fail, [''])
 
-test('T2334A', normal, compile_fail, [''])
+test('T2334', normal, compile_fail, [''])
 test('T1900', normal, compile_fail, [''])
 test('T2157', normal, compile_fail, [''])
 test('T2203a', normal, compile_fail, [''])
@@ -65,13 +65,14 @@ test('T2239', normal, compile_fail, [''])
 test('T3440', normal, compile_fail, [''])
 test('T4485', normal, compile_fail, [''])
 test('T4174', normal, compile_fail, [''])
-test('DerivUnsatFam', when(compiler_lt('ghc', '7.1'), expect_fail), compile_fail, [''])
+test('DerivUnsatFam', if_compiler_lt('ghc', '7.1', expect_fail), compile_fail, [''])
 test('T2664', normal, compile_fail, [''])
 test('T2664a', normal, compile, [''])
 test('T2544', normal, compile_fail, [''])
 test('T1897b', normal, compile_fail, [''])
 test('T5439', normal, compile_fail, [''])
 test('T5515', normal, compile_fail, [''])
+test('T5763', expect_broken(5673), compile_fail, [''])
 test('T5934', normal, compile_fail, [''])
 test('T6123', normal, compile_fail, [''])
 test('ExtraTcsUntch', normal, compile_fail, [''])
@@ -92,9 +93,7 @@ test('T7354a',
      extra_clean(['T7354b.o', 'T7354b.hi']),
      run_command,
      ['$MAKE -s --no-print-directory T7354a'])
-test('T7536', normal, compile_fail, [''])
 
-test('T7560', normal, compile_fail, [''])
-test('T7729', normal, compile_fail, [''])
-test('T7729a', normal, compile_fail, [''])
-test('T7786', normal, compile_fail, [''])
+
+
+

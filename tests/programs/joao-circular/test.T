@@ -1,5 +1,5 @@
 test('joao-circular',
-     [when(fast(), skip),
+     [skip_if_fast,
       extra_clean(['Data_Lazy.hi',         'Data_Lazy.o',
                    'Funcs_Lexer.hi',       'Funcs_Lexer.o',
                    'Funcs_Parser_Lazy.hi', 'Funcs_Parser_Lazy.o',

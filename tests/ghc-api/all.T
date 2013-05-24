@@ -1,4 +1,3 @@
-test('T6145', when(fast(), skip),
+test('T6145', [skip_if_fast],
               run_command,
               ['$MAKE -s --no-print-directory T6145'])
-test('ghcApi', normal, compile_and_run, ['-package ghc'])

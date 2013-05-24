@@ -3,13 +3,13 @@
 extra_prof_ways = ['prof', 'prof_hc_hb', 'prof_hb', 'prof_hd', 'prof_hy', 'prof_hr']
 
 test('heapprof001',
-     [only_ways(prof_ways),
-      extra_ways(extra_prof_ways),
-      req_profiling,
-      extra_run_opts('7')],
+     composes([only_ways(prof_ways),
+               extra_ways(extra_prof_ways),
+               req_profiling,
+               extra_run_opts('7')]),
      compile_and_run, [''])
 
-test('T2592',
+test('2592',
      [only_ways(['profasm']), req_profiling,
       extra_run_opts('+RTS -M1m -RTS'), exit_code(251)],
      compile_and_run, [''])
@@ -43,7 +43,7 @@ test('scc004', [req_profiling,
      compile_and_run,
      [''])
 
-test('T5314',
+test('5314',
      [ only_ways(prof_ways),
        extra_ways(extra_prof_ways),
        req_profiling ],

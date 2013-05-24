@@ -17,7 +17,7 @@ instance FooBar [] Bool Bool where
 instance FooBar Maybe Int Int where
   a = error "urk"
 
-class (Monad m)=>Gr g ep m where 
+class (Monad m)=>Gr g ep m | g -> ep where 
  x:: m Int
  v:: m Int
 

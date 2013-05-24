@@ -33,7 +33,7 @@ import Control.Exception (assert)
 import Control.Monad
 import Control.Monad.Trans.State.Strict
 import Control.Monad.Trans.Class
-import GHC.Exts hiding (IsList(..))
+import GHC.Exts
 import GHC.ST hiding (liftST)
 import Prelude hiding (length, read)
 import qualified Prelude as P

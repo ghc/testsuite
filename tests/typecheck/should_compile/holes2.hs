@@ -1,5 +1,7 @@
 {-# LANGUAGE TypeHoles #-}
 
-module Holes2 where
+module Main where
+
+main = return ()
 
 f = show _

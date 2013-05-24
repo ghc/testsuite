@@ -21,7 +21,6 @@ import GHC.Word
 
 import Control.Monad
 import Foreign
-import System.IO.Unsafe
 import System.IO
 
 import Data.Char    (chr,ord)

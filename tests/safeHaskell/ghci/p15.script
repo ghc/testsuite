@@ -4,7 +4,7 @@
 :set -XDeriveDataTypeable
 :set -XStandaloneDeriving
 
-:m + Data.OldTypeable
+:m + Data.Typeable
 
 data H = H {h :: String} deriving (Typeable, Show)
 

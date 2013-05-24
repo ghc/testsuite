@@ -2,10 +2,6 @@ TOP=../../..
 include $(TOP)/mk/boilerplate.mk
 include $(TOP)/mk/test.mk
 
-T7865:
-	$(RM) -f T7865.o T7865.hi 
-	'$(TEST_HC)' $(TEST_HC_OPTS) -dsuppress-uniques -O2 -c -ddump-simpl T7865.hs | grep expensive
-
 T3055:
 	$(RM) -f T3055.o T3055.hi T3055.simpl
 	'$(TEST_HC)' $(TEST_HC_OPTS) -O -c T3055.hs -ddump-simpl > T3055.simpl
@@ -92,14 +88,3 @@ T7165:
 	'$(TEST_HC)' $(TEST_HC_OPTS) -c -O2 T7165a.hs -dcore-lint
 	'$(TEST_HC)' $(TEST_HC_OPTS) -c -O2 T7165.hs -dcore-lint
 
-T5366:
-	$(RM) -f T5366.hi T5366.o
-	'$(TEST_HC)' $(TEST_HC_OPTS) -ddump-simpl -dsuppress-uniques -c -O T5366.hs | grep 'Bar.*I#'
-
-# We expect 0 occurrences of ' $sgo' in -ddump-prep. Mind the Makefile
-# $-escaping. The -grep ignores grep's expected exit code of 1.
-.PHONY: T7796
-T7796:
-	'$(TEST_HC)' $(TEST_HC_OPTS) -O1 -c T7796.hs -ddump-prep > T7796.prep
-	(grep -q '$$w$$sgo' T7796.prep || echo 'could not find $$w$$sgo; compilation was not as expected')
-	-grep -c ' $$sgo' T7796.prep

@@ -282,15 +282,15 @@ test('driver200',
      run_command,
      ['$MAKE -s --no-print-directory test200'])
 
-test('T2566',
+test('2566',
      normalise_fun(normalise_errmsg),
      run_command,
-     ['$MAKE -s --no-print-directory T2566'])
+     ['$MAKE -s --no-print-directory 2566'])
 
 test('pragma001', normal, compile, [''])
 test('pragma002', normal, compile, [''])
 
-test('T2499', normal, compile_fail, [''])
+test('2499', normal, compile_fail, [''])
 
 test('mode001', normal, run_command,
      ['$MAKE -s --no-print-directory mode001'])
@@ -311,18 +311,14 @@ test('dynHelloWorld',
      compile_and_run,
      [''])
 
-test('T5313',
-     [extra_run_opts('"' + config.libdir + '"'),
-      expect_broken(7774)],
-     compile_and_run,
-     ['-package ghc'])
+test('5313', extra_run_opts('"' + config.libdir + '"'), compile_and_run, ['-package ghc'])
 
-test('T2464', normal, compile, [''])
-test('T3674',
+test('2464', normal, compile, [''])
+test('3674',
      [ignore_output,
-      extra_clean(['T3674_pre.hi', 'T3674_pre.o', 'T3674_pre', 'T3674_pre.exe'])],
+      extra_clean(['3674_pre.hi', '3674_pre.o', '3674_pre', '3674_pre.exe'])],
      run_command, 
-     ['$MAKE -s --no-print-directory T3674'])
+     ['$MAKE -s --no-print-directory 3674'])
 
 test('rtsopts001',
      extra_clean(['rtsOpts.hi', 'rtsOpts.o', 'rtsOpts', 'rtsOpts.exe']),
@@ -366,13 +362,3 @@ test('T7060',
      run_command,
      ['$MAKE -s --no-print-directory T7060'])
 test('T7130', normal, compile_fail, ['-fflul-laziness'])
-test('T7563', when(unregisterised(), skip), run_command,
-     ['$MAKE -s --no-print-directory T7563'])
-test('T6037', expect_broken(6037), run_command,
-     ['$MAKE -s --no-print-directory T6037'])
-test('T2507',
-     # The testsuite doesn't know how to set a non-Unicode locale on Windows
-     when(opsys('mingw32'), expect_fail),
-     run_command,
-     ['$MAKE -s --no-print-directory T2507'])
-

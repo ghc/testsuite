@@ -1,6 +1,6 @@
 
 test('andy_cherry',
-     [when(fast(), skip),
+     [skip_if_fast,
       extra_clean(['DataTypes.hi',   'DataTypes.o',
                    'GenUtils.hi',    'GenUtils.o',
                    'Interp.hi',      'Interp.o',

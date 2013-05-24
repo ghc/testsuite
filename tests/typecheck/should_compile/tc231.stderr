@@ -8,14 +8,14 @@ TYPE CONSTRUCTORS
   Q :: * -> * -> * -> *
   data Q s a chain
       No C type associated
-      RecFlag NonRecursive, Promotable
+      RecFlag NonRecursive
       = Node :: forall s a chain. s -> a -> chain -> Q s a chain
             Stricts: _ _ _
       FamilyInstance: none
   Z :: * -> *
   data Z a
       No C type associated
-      RecFlag NonRecursive, Promotable
+      RecFlag NonRecursive
       = Z :: forall a. a -> Z a Stricts: _
       FamilyInstance: none
   Zork :: * -> * -> * -> Constraint
@@ -24,6 +24,6 @@ TYPE CONSTRUCTORS
       huh :: forall chain. Q s a chain -> ST s ()
 COERCION AXIOMS
   axiom ShouldCompile.NTCo:Zork ::
-    Zork s a b = forall chain. Q s a chain -> ST s ()
+    forall s a b. Zork s a b ~# (forall chain. Q s a chain -> ST s ())
 Dependent modules: []
 Dependent packages: [base, ghc-prim, integer-gmp]

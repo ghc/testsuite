@@ -2,7 +2,7 @@
 test    ('dph-nbody-vseg-opt' 
         , [ high_memory_usage
           , outputdir('vseg-opt')
-          , when(fast(), skip)
+          , skip_if_fast
           , reqlib('dph-lifted-vseg')
           , reqlib('dph-prim-par')
           , only_ways(['normal', 'threaded1', 'threaded2']) ] 
@@ -14,13 +14,13 @@ test    ('dph-nbody-vseg-opt'
 test    ('dph-nbody-copy-opt' 
         , [ high_memory_usage
           , outputdir('copy-opt')
-          , when(fast(), skip)
+          , skip_if_fast
           , reqlib('dph-lifted-copy')
           , reqlib('dph-prim-par')
           , only_ways(['normal', 'threaded1', 'threaded2']) ] 
         , multimod_compile_and_run 
         , [ 'Main'
-          , '-Odph -fno-vectorisation-avoidance -fno-liberate-case -package dph-lifted-copy -package dph-prim-par'])
+          , '-Odph -fno-liberate-case -package dph-lifted-copy -package dph-prim-par'])
 
 
 test    ('dph-nbody-vseg-fast' 
@@ -40,4 +40,4 @@ test    ('dph-nbody-copy-fast'
           , only_ways(['normal', 'threaded1', 'threaded2']) ] 
         , multimod_compile_and_run 
         , [ 'Main'
-          , '-O0 -fno-vectorisation-avoidance -package dph-lifted-copy -package dph-prim-par'])
+          , '-O0 -package dph-lifted-copy -package dph-prim-par'])

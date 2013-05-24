@@ -1,5 +1,5 @@
 
-setTestOpts(when(compiler_profiled(), skip))
+setTestOpts(if_compiler_profiled(skip))
 
 # Annotations, like Template Haskell, require runtime evaluation.  In
 # order for this to work with profiling, we would have to build the

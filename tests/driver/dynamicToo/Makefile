@@ -21,32 +21,3 @@ dynamicToo001:
 	./s001
 	./d001
 
-
-checkExists = [ -f $1 ] || echo $1 missing
-
-.PHONY: dynamicToo002
-# Check that "--make -dynamic-too" works
-dynamicToo002:
-	"$(TEST_HC)" $(TEST_HC_OPTS) -dynamic-too -v0 --make C002
-	$(call checkExists,A002.o)
-	$(call checkExists,B002.o)
-	$(call checkExists,C002.o)
-	$(call checkExists,A002.hi)
-	$(call checkExists,B002.hi)
-	$(call checkExists,C002.hi)
-	$(call checkExists,A002.dyn_o)
-	$(call checkExists,B002.dyn_o)
-	$(call checkExists,C002.dyn_o)
-	$(call checkExists,A002.dyn_hi)
-	$(call checkExists,B002.dyn_hi)
-	$(call checkExists,C002.dyn_hi)
-
-.PHONY: dynamicToo003
-# Check that "-c -dynamic-too" works
-dynamicToo003:
-	"$(TEST_HC)" $(TEST_HC_OPTS) -dynamic-too -v0 -c A003.hs
-	$(call checkExists,A003.o)
-	$(call checkExists,A003.hi)
-	$(call checkExists,A003.dyn_o)
-	$(call checkExists,A003.dyn_hi)
-

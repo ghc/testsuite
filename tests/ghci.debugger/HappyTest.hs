@@ -1,4 +1,4 @@
-{-# LANGUAGE CPP, MagicHash #-}
+{-# LANGUAGE CPP #-}
 import Data.Char
 import Data.Array
 import GHC.Exts

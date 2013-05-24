@@ -5,7 +5,7 @@
 
 module Main ( main ) where
 
-import GHC.Exts hiding (IsList(..))
+import GHC.Exts
 import GHC.Prim
 import GHC.ST
 

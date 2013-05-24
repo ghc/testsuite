@@ -113,7 +113,7 @@ test('rn067',
 test('T1972', normal, compile, [''])
 test('T2205', normal, compile, [''])
 
-test('T2334', normal, compile, [''])
+test('2334', normal, compile, [''])
 test('T2506', normal, compile, [''])
 test('T2914', normal, compile, [''])
 test('T3221', normal, compile, [''])
@@ -161,7 +161,7 @@ test('T4240',
      ['$MAKE -s --no-print-directory T4240'])
 
 test('T4489', normal, compile, [''])
-test('T4478', when(compiler_lt('ghc', '7.1'), expect_fail), compile, [''])
+test('T4478', if_compiler_lt('ghc', '7.1', expect_fail), compile, [''])
 test('T4534', normal, compile, [''])
 
 test('mc09', normal, compile, [''])
@@ -202,5 +202,3 @@ test('dodgy',
      ['dodgy', '-v0'])
 test('T7167', normal, compile, [''])
 test('T7336', normal, compile, ['-Wall'])
-
-test('T2435', normal, multimod_compile, ['T2435','-v0'])

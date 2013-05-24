@@ -1,5 +1,5 @@
-Unmasked
-MaskedInterruptible
+False
+True
 caught1: foo
-MaskedInterruptible
+True
 caught2: bar

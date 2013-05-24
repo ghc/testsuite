@@ -1,6 +1,6 @@
 
 test    ('dph-diophantine-copy-opt' 
-        , [ when(fast(), skip)
+        , [ skip_if_fast
           , outputdir('opt')
           , reqlib('dph-lifted-copy')
           , reqlib('dph-prim-par')

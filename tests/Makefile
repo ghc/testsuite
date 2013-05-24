@@ -3,8 +3,7 @@ include $(TOP)/mk/boilerplate.mk
 include $(TOP)/mk/test.mk
 
 # The libraries that we actually know about. We don't want to test
-# extralibs that are in our tree but which we haven't built, and
-# we don't want to test unix on Windows or Win32 on non-Windows.
+# extralibs that are in our tree but which we haven't built.
 LIBRARIES := $(shell '$(GHC_PKG)' list --simple-output --names-only)
 
 ifeq "$(findstring base,$(LIBRARIES))" ""

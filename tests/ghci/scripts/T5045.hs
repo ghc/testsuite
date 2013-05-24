@@ -6,7 +6,7 @@ module T5045 where
 import Control.Arrow
 
 class (Control.Arrow.Arrow a') => ArrowAddReader r a a' | a -> a' where
-  elimReader :: a (e, s) b -> a' (e, (r, s)) b
+  elimReader :: a e b -> a' (e, r) b
 
 newtype ByteString = FakeByteString String
 

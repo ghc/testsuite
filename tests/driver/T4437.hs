@@ -31,16 +31,11 @@ check title expected got
 
 expectedGhcOnlyExtensions :: [String]
 expectedGhcOnlyExtensions = [
-                             "AllowAmbiguousTypes",
                              "RelaxedLayout",
                              "AlternativeLayoutRule",
                              "AlternativeLayoutRuleTransitional",
                              "ExplicitNamespaces",
-                             "TypeHoles",
-                             "OverloadedLists",
-                             "EmptyCase",
-                             "AutoDeriveTypeable",
-                             "NullaryTypeClasses"]
+                             "TypeHoles"]
 
 expectedCabalOnlyExtensions :: [String]
 expectedCabalOnlyExtensions = ["Generics",
