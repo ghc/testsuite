@@ -1,3 +1,0 @@
-
-BadImport04.hs:5:1:
-    Foreign: Can't be safely imported! The module itself isn't safe.

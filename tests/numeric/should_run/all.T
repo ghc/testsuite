@@ -7,7 +7,7 @@ test('arith001', normal, compile_and_run, [''])
 test('arith002', normal, compile_and_run, [''])
 test('arith003', normal, compile_and_run, [''])
 test('arith004', normal, compile_and_run, [''])
-test('arith005', normal, compile_and_run, [''])
+test('arith005', when(platform('i386-apple-darwin'), expect_broken_for(7043, 'ghci')), compile_and_run, [''])
 test('arith006', normal, compile_and_run, [''])
 test('arith007', normal, compile_and_run, [''])
 
@@ -29,30 +29,25 @@ test('arith011', normal, compile_and_run, [''])
 
 test('arith012', ways, compile_and_run, [opts])
 
-test('arith013', compose(normal,only_compiler_types(['ghc'])), compile_and_run, [''])
+test('arith013', only_compiler_types(['ghc']), compile_and_run, [''])
 test('arith014', normal, compile_and_run, [''])
 test('arith015', normal, compile_and_run, [''])
 test('numrun009', normal, compile_and_run, [''])
 test('numrun010', normal, compile_and_run, [''])
 test('numrun011', normal, compile_and_run, [''])
-test('numrun012',
-        if_os('mingw32',expect_fail_for('ghci')),
-        # on Windows, GHCi says that "logBase 2 (2^31)" is "31.0", but
-        # other platforms (and compiled on Windows) reports 31.000000000000004
-        # I have no idea where the discrepancy comes from.  --SDM
-        compile_and_run, [''])
+test('numrun012', normal, compile_and_run, [''])
 test('numrun013', normal, compile_and_run, [''])
 test('numrun014', normal, compile_and_run, [''])
-test('arith016', compose(normal,only_compiler_types(['ghc'])), compile_and_run, [''])
+test('arith016', [normal,only_compiler_types(['ghc'])], compile_and_run, [''])
 test('arith017', normal, compile_and_run, [''])
 test('arith018', normal, compile_and_run, [''])
 test('arith019', normal, compile_and_run, [''])
 test('expfloat', normal, compile_and_run, [''])
 
-test('1603', skip, compile_and_run, [''])
-test('3676', expect_broken(3676), compile_and_run, [''])
-test('4381', normal, compile_and_run, [''])
-test('4383', normal, compile_and_run, [''])
+test('T1603', skip, compile_and_run, [''])
+test('T3676', expect_broken(3676), compile_and_run, [''])
+test('T4381', normal, compile_and_run, [''])
+test('T4383', normal, compile_and_run, [''])
 
 test('add2', normal, compile_and_run, ['-fobject-code'])
 test('mul2', normal, compile_and_run, ['-fobject-code'])
@@ -65,3 +60,5 @@ test('T7014',
      ['$MAKE -s --no-print-directory T7014'])
 
 test('T7233', normal, compile_and_run, [''])
+
+test('T7689', normal, compile_and_run, [''])
