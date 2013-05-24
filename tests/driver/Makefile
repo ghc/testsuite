@@ -17,6 +17,7 @@ OBJSUFFIX = .o
 # -fforce-recomp makes lots of driver tests trivially pass, so we
 # filter it out from $(TEST_HC_OPTS).
 TEST_HC_OPTS_NO_RECOMP = $(filter-out -fforce-recomp,$(TEST_HC_OPTS))
+TEST_HC_OPTS_NO_RECOMP_NO_RTSOPTS = $(filter-out -rtsopts,$(TEST_HC_OPTS_NO_RECOMP))
 
 # -----------------------------------------------------------------------------
 # One-shot compilations, non-hierarchical modules
@@ -411,7 +412,7 @@ test200:
 
 # -----------------------------------------------------------------------------
 
-2566::
+T2566::
 	if "$(TEST_HC)" $(TEST_HC_OPTS_NO_RECOMP) -c foo2566.bar; then false else true; fi
 
 .PHONY: mode001
@@ -435,14 +436,14 @@ mode001:
 # Test for building DLLs with ghc -shared, see #2745
 shared001:
 	$(RM) Shared001.hi Shared001.o HSdll.dll.a HSdll.dll Shared001_stub.*
-	"$(TEST_HC)" $(TEST_HC_OPTS_NO_RECOMP) -v0 -shared Shared001.hs
+	"$(TEST_HC)" $(TEST_HC_OPTS_NO_RECOMP_NO_RTSOPTS) -v0 -shared Shared001.hs
 
 # -----------------------------------------------------------------------------
 
-3674:
-	$(RM) 3674*.o 3674*.hi 3674_pre
-	"$(TEST_HC)" $(TEST_HC_OPTS_NO_RECOMP) --make 3674_pre.hs
-	"$(TEST_HC)" $(TEST_HC_OPTS_NO_RECOMP) --make 3674.hs
+T3674:
+	$(RM) T3674*.o T3674*.hi T3674_pre
+	"$(TEST_HC)" $(TEST_HC_OPTS_NO_RECOMP) --make T3674_pre.hs
+	"$(TEST_HC)" $(TEST_HC_OPTS_NO_RECOMP) --make T3674.hs
 
 .PHONY: rtsopts001
 rtsopts001:
@@ -485,9 +486,9 @@ T3364:
 .PHONY: T706
 T706:
 	cp T706a.hs T706.hs
-	"$(TEST_HC)" $(TEST_HC_OPTS_NO_RECOMP) -c T706.hs
+	"$(TEST_HC)" $(TEST_HC_OPTS_NO_RECOMP) $(ghciWayFlags) -c T706.hs
 	cp T706b.hs T706.hs
-	"$(TEST_HC)" $(TEST_HC_OPTS_NO_RECOMP) -c T706.hs
+	"$(TEST_HC)" $(TEST_HC_OPTS_NO_RECOMP) $(ghciWayFlags) -c T706.hs
 	echo "test" | "$(TEST_HC)" $(TEST_HC_OPTS_NO_RECOMP) --interactive -ignore-dot-ghci -v0 T706
 
 .PHONY: T5584
@@ -530,3 +531,16 @@ T7060: T7060a T7060b T7060c
 .PHONY: T7130
 T7130:
 	"$(TEST_HC)" $(TEST_HC_OPTS_NO_RECOMP) -fflul-laziness
+
+.PHONY: T7563
+T7563:
+	-"$(TEST_HC)" $(TEST_HC_OPTS_NO_RECOMP) -C T7563.hs
+
+.PHONY: T6037
+T6037:
+	-LC_ALL=C "$(TEST_HC)" $(TEST_HC_OPTS_NO_RECOMP) -c T6037.hs
+
+.PHONY: T2507
+T2507:
+	-LC_ALL=C "$(TEST_HC)" $(TEST_HC_OPTS_NO_RECOMP) -c T2507.hs
+

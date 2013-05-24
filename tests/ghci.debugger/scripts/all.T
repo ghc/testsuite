@@ -1,6 +1,6 @@
-setTestOpts(composes([extra_run_opts('-ignore-dot-ghci'),
-                     if_compiler_profiled(skip),
-                     normalise_slashes]))
+setTestOpts([extra_run_opts('-ignore-dot-ghci'),
+             when(compiler_profiled(), skip),
+             normalise_slashes])
 
 test('print001', normal, ghci_script, ['print001.script'])
 test('print002', normal, ghci_script, ['print002.script'])
@@ -20,7 +20,7 @@ test('print016', normal, ghci_script, ['print016.script'])
 test('print017', normal, ghci_script, ['print017.script'])
 test('print018', normal, ghci_script, ['print018.script'])
 test('print019', normal, ghci_script, ['print019.script'])
-test('print020', expect_broken(2806), ghci_script, ['print020.script'])
+test('print020', normal, ghci_script, ['print020.script'])
 test('print021', normal, ghci_script, ['print021.script'])
 test('print022', normal, ghci_script, ['print022.script'])
 test('print023', normal, ghci_script, ['print023.script'])
@@ -36,7 +36,8 @@ test('print032', normal, ghci_script, ['print032.script'])
 test('print033', normal, ghci_script, ['print033.script'])
 test('print034', normal, ghci_script, ['print034.script'])
 test('print035',
-     if_ghci_dynamic(expect_broken(7326)),
+     [when(ghci_dynamic(), expect_broken(7326)),
+      extra_clean(['../Unboxed.hi', '../Unboxed.o'])],
      ghci_script,
      ['print035.script'])
 
@@ -76,14 +77,14 @@ test('dynbrk007', normal, ghci_script, ['dynbrk007.script'])
 test('dynbrk008', normal, ghci_script, ['dynbrk008.script'])
 test('dynbrk009', normal, ghci_script, ['dynbrk009.script'])
 
-test('result001', expect_broken(1531), ghci_script, ['result001.script'])
+test('result001', normal, ghci_script, ['result001.script'])
 
 test('listCommand001', combined_output, ghci_script, ['listCommand001.script'])
 test('listCommand002', normal, ghci_script, ['listCommand002.script'])
 
 test('hist001', normal, ghci_script, ['hist001.script'])
 
-test('2740', normal, ghci_script, ['2740.script'])
+test('T2740', normal, ghci_script, ['T2740.script'])
 
 test('getargs', normal, ghci_script, ['getargs.script'])
 test('T7386', normal, ghci_script, ['T7386.script'])

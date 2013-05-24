@@ -47,10 +47,10 @@ else
 RUNTEST_OPTS += -e ghc_with_native_codegen=0
 endif
 
-BASE_LIBDIR := $(shell "$(GHC_PKG)" field base library-dirs | sed 's/^[^:]*: *//')
-HAVE_VANILLA := $(shell if [ -f $(subst \,/,$(BASE_LIBDIR))/Prelude.hi ]; then echo YES; else echo NO; fi)
-HAVE_DYNAMIC := $(shell if [ -f $(subst \,/,$(BASE_LIBDIR))/Prelude.dyn_hi ]; then echo YES; else echo NO; fi)
-HAVE_PROFILING := $(shell if [ -f $(subst \,/,$(BASE_LIBDIR))/Prelude.p_hi ]; then echo YES; else echo NO; fi)
+GHC_PRIM_LIBDIR := $(shell "$(GHC_PKG)" field ghc-prim library-dirs --simple-output)
+HAVE_VANILLA := $(shell if [ -f $(subst \,/,$(GHC_PRIM_LIBDIR))/GHC/PrimopWrappers.hi ]; then echo YES; else echo NO; fi)
+HAVE_DYNAMIC := $(shell if [ -f $(subst \,/,$(GHC_PRIM_LIBDIR))/GHC/PrimopWrappers.dyn_hi ]; then echo YES; else echo NO; fi)
+HAVE_PROFILING := $(shell if [ -f $(subst \,/,$(GHC_PRIM_LIBDIR))/GHC/PrimopWrappers.p_hi ]; then echo YES; else echo NO; fi)
 
 ifeq "$(HAVE_VANILLA)" "YES"
 RUNTEST_OPTS += -e ghc_with_vanilla=1
@@ -102,6 +102,14 @@ CABAL_MINIMAL_BUILD = --enable-shared --disable-library-vanilla
 else
 RUNTEST_OPTS += -e ghc_dynamic_by_default=False
 CABAL_MINIMAL_BUILD = --enable-library-vanilla --disable-shared
+endif
+
+ifeq "$(GhcDynamic)" "YES"
+RUNTEST_OPTS += -e ghc_dynamic=True
+CABAL_PLUGIN_BUILD = --enable-shared --disable-library-vanilla
+else
+RUNTEST_OPTS += -e ghc_dynamic=False
+CABAL_PLUGIN_BUILD = --enable-library-vanilla --disable-shared
 endif
 
 ifeq "$(GhcWithSMP)" "YES"
@@ -175,6 +183,12 @@ endif
 RUNTEST_OPTS +=  \
 	$(EXTRA_RUNTEST_OPTS)
 
+ifeq "$(list_broken)" "YES"
+set_list_broken = -e config.list_broken=True
+else
+set_list_broken = 
+endif
+
 ifeq "$(fast)" "YES"
 setfast = -e config.fast=1
 else
@@ -209,6 +223,7 @@ test: $(TIMEOUT_PROGRAM)
 		$(patsubst %, --only=%, $(TESTS)) \
 		$(patsubst %, --way=%, $(WAY)) \
 		$(patsubst %, --skipway=%, $(SKIPWAY)) \
+		$(set_list_broken) \
 		$(setfast) \
 		$(setaccept)
 
@@ -219,4 +234,7 @@ accept:
 
 fast:
 	$(MAKE) fast=YES
+
+list_broken:
+	$(MAKE) list_broken=YES
 

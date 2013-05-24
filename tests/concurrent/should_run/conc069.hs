@@ -6,14 +6,14 @@ main = do
   m <- newEmptyMVar
   forkIO (do stat; putMVar m ())
   takeMVar m
-  block $ forkIO (do stat; putMVar m ())
+  mask_ $ forkIO (do stat; putMVar m ())
   takeMVar m
   forkOS (do stat; putMVar m ())
   takeMVar m
-  block $ forkOS (do stat; putMVar m ())
+  mask_ $ forkOS (do stat; putMVar m ())
   takeMVar m
 
 stat = do
   x <- isCurrentThreadBound
-  y <- blocked
+  y <- getMaskingState
   print (x,y)

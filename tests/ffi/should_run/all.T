@@ -5,15 +5,15 @@
 #	expected process return value, if not zero
 
 # Doesn't work with External Core due to __labels
-test('fed001', compose(only_compiler_types(['ghc']),
-			expect_fail_for(['extcore','optextcore'])),
+test('fed001', [only_compiler_types(['ghc']),
+                expect_fail_for(['extcore','optextcore'])],
 		compile_and_run, [''])
 
 # Omit GHCi for these two, as they use foreign export
 test('ffi001', omit_ways(['ghci']), compile_and_run, [''])
 test('ffi002', [ omit_ways(['ghci']),
                  extra_clean(['ffi002_c.o']),
-                 compile_cmd_prefix('$MAKE ffi002_setup && ') ],
+                 pre_cmd('$MAKE -s --no-print-directory ffi002_setup') ],
                  # The ffi002_setup hack is to ensure that we generate
                  # ffi002_stub.h before compiling ffi002_c.c, which
                  # needs it.
@@ -32,8 +32,8 @@ test('ffi004', skip, compile_and_run, [''])
 # use of 80-bit internal precision when using the native code generator.
 #
 test('ffi005', [ omit_ways(prof_ways), 
-                 if_arch('i386', skip),
-                 if_platform('i386-apple-darwin', expect_broken(4105)),
+                 when(arch('i386'), skip),
+                 when(platform('i386-apple-darwin'), expect_broken(4105)),
                  exit_code(3) ],
                compile_and_run, [''])
 
@@ -48,13 +48,14 @@ test('ffi006', expect_fail_for(['extcore','optextcore']), compile_and_run, [''])
 # Sometimes we end up with the wrong exit code, or get an extra
 # 'interrupted' message from the GHCi thread shutting down.
 
-test('ffi007', compose( omit_ways(['ghci']),
-		        expect_fail_for(['extcore','optextcore']) ), 
+test('ffi007',
+     [omit_ways(['ghci']), expect_fail_for(['extcore','optextcore'])], 
 	       compile_and_run, [''])
 
-test('ffi008', compose(expect_fail_for(['extcore','optextcore']), 
-		       compose(exit_code(1),
-			       omit_ways(['ghci']))), 
+test('ffi008',
+     [expect_fail_for(['extcore','optextcore']),
+      exit_code(1),
+      omit_ways(['ghci'])],
 	       compile_and_run, [''])
 
 # On i386, we need -msse2 to get reliable floating point results
@@ -67,7 +68,7 @@ if config.platform.startswith('i386-'):
    else:
         maybe_skip = only_ways(['ghci'])
 
-test('ffi009', [skip_if_fast, expect_fail_for(['extcore','optextcore']),
+test('ffi009', [when(fast(), skip), expect_fail_for(['extcore','optextcore']),
                 reqlib('random'),
                 maybe_skip] ,compile_and_run, [opts])
 
@@ -109,47 +110,47 @@ test('ffi018', [ omit_ways(['ghci']), extra_clean(['ffi018_c.o']) ],
                compile_and_run, ['ffi018_c.c'])
 
 test('ffi018_ghci', [ only_ways(['ghci']),
-                      cmd_prefix('$MAKE ffi018_ghci_setup && '),
+                      pre_cmd('$MAKE -s --no-print-directory ffi018_ghci_setup'),
                       extra_clean(['ffi018_ghci_c.o']) ],
                     compile_and_run, ['ffi018_ghci_c.o'])
 
 test('ffi019', normal, compile_and_run, [''])
 
 # This one originally failed only GHCi, but doesn't hurt to test all ways.
-test('1679', normal, compile_and_run, [''])
+test('T1679', normal, compile_and_run, [''])
 
-test('1288', [ omit_ways(['ghci']),
-               extra_clean(['1288_c.o']) ],
-             compile_and_run, ['1288_c.c'])
-test('1288_ghci', [ only_ways(['ghci']),
-                    cmd_prefix('$MAKE --no-print-directory 1288_ghci_setup && '),
-                    extra_clean(['1288_ghci_c.o']) ],
-                  compile_and_run, ['1288_ghci_c.o'])
+test('T1288', [ omit_ways(['ghci']),
+                extra_clean(['T1288_c.o']) ],
+              compile_and_run, ['T1288_c.c'])
+test('T1288_ghci', [ only_ways(['ghci']),
+                     pre_cmd('$MAKE -s --no-print-directory T1288_ghci_setup'),
+                     extra_clean(['T1288_ghci_c.o']) ],
+                   compile_and_run, ['T1288_ghci_c.o'])
 
-test('2276', [ omit_ways(['ghci']), 
-               extra_clean(['2276_c.o']) ],
-             compile_and_run, ['2276_c.c'])
-test('2276_ghci', [ only_ways(['ghci']),
-                    cmd_prefix('$MAKE --no-print-directory 2276_ghci_setup && '),
-                    extra_clean(['2276_ghci_c.o']) ],
-                  compile_and_run, ['-fobject-code 2276_ghci_c.o'])
+test('T2276', [ omit_ways(['ghci']), 
+                extra_clean(['T2276_c.o']) ],
+              compile_and_run, ['T2276_c.c'])
+test('T2276_ghci', [ only_ways(['ghci']),
+                     pre_cmd('$MAKE -s --no-print-directory T2276_ghci_setup'),
+                     extra_clean(['T2276_ghci_c.o']) ],
+                   compile_and_run, ['-fobject-code T2276_ghci_c.o'])
 
-test('2469', normal, compile_and_run, ['-optc-std=gnu99'])
+test('T2469', normal, compile_and_run, ['-optc-std=gnu99'])
 
-test('2594',
-     [extra_clean(['2594_c.o']), omit_ways(['ghci'])],
+test('T2594',
+     [extra_clean(['T2594_c.o']), omit_ways(['ghci'])],
      compile_and_run,
-     ['2594_c.c'])
+     ['T2594_c.c'])
 
 test('fptr01', [ omit_ways(['ghci']), extra_clean(['fptr01_c.o']) ],
                compile_and_run, ['fptr01_c.c'])
 test('fptr02', normal, compile_and_run, [''])
 
-test('fptrfail01', [ compose(omit_ways(['ghci']), exit_code(1)),
+test('fptrfail01', [ omit_ways(['ghci']), exit_code(1),
                      extra_clean(['fptrfail01_c.o']) ],
                    compile_and_run, ['fptrfail01_c.c'])
 
-test('2917a', normal, compile_and_run, [''])
+test('T2917a', normal, compile_and_run, [''])
 
 # omit prof ways, because this test causes the RTS to exit (correctly)
 # without generating profiling information.
@@ -163,30 +164,30 @@ test('ffi022', normal, compile_and_run, [''])
 
 if config.os == 'mingw32':
     # This test needs a larger C stack than we get by default on Windows
-	flagsFor4038 = ['-optl-Wl,--stack,10485760']
+	flagsForT4038 = ['-optl-Wl,--stack,10485760']
 else:
-	flagsFor4038 = ['']
-test('4038', normal, compile_and_run, flagsFor4038)
+	flagsForT4038 = ['']
+test('T4038', normal, compile_and_run, flagsForT4038)
 
-test('4221', [ omit_ways(['ghci']), extra_clean(['4221_c.o']) ],
-               compile_and_run, ['4221_c.c'])
+test('T4221', [ omit_ways(['ghci']), extra_clean(['T4221_c.o']) ],
+                compile_and_run, ['T4221_c.c'])
 
-test('5402', [ omit_ways(['ghci']),
-               exit_code(42),
-               extra_clean(['5402_main.o']),
-                 # The 5402_setup hack is to ensure that we generate
-                 # 5402_stub.h before compiling 5402_main.c, which
-                 # needs it.
-               compile_cmd_prefix('$MAKE --no-print-directory 5402_setup && ') ],
-             compile_and_run, ["-no-hs-main 5402_main.c"])
+test('T5402', [ omit_ways(['ghci']),
+                exit_code(42),
+                extra_clean(['T5402_main.o']),
+                  # The T5402_setup hack is to ensure that we generate
+                  # T5402_stub.h before compiling T5402_main.c, which
+                  # needs it.
+                pre_cmd('$MAKE -s --no-print-directory T5402_setup') ],
+              compile_and_run, ["-no-hs-main T5402_main.c"])
 
-test('5594', [ omit_ways(['ghci']),
-               extra_clean(['5594_c.o']),
-               compile_cmd_prefix('$MAKE --no-print-directory 5594_setup && ') ],
-               # The 5594_setup hack is to ensure that we generate
-               # 5594_stub.h before compiling 5594_c.c, which
-               # needs it.
-               compile_and_run, ['5594_c.c -no-hs-main'])
+test('T5594', [ omit_ways(['ghci']),
+                extra_clean(['T5594_c.o']),
+                pre_cmd('$MAKE -s --no-print-directory T5594_setup') ],
+                # The T5594_setup hack is to ensure that we generate
+                # T5594_stub.h before compiling T5594_c.c, which
+                # needs it.
+                compile_and_run, ['T5594_c.c -no-hs-main'])
 
 test('Capi_Ctype_001',
      extra_clean(['Capi_Ctype_A_001.o', 'Capi_Ctype_A_001.hi',
@@ -211,7 +212,7 @@ test('capi_value',
      compile_and_run,
      ['capi_value_c.c'])
 
-test('7170', exit_code(1), compile_and_run, [''])
+test('T7170', exit_code(1), compile_and_run, [''])
 
 test('T4012',
      [extra_clean(['T4012_A.hi', 'T4012_A.o', 'T4012_B.hi', 'T4012_B.o']),
