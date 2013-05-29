@@ -1,6 +1,8 @@
 setTestOpts(only_compiler_types(['ghc']))
 setTestOpts(omit_ways(['optasm']))
 
+test('NonLinearLHS', normal, compile_fail, [''])
+
 test('SimpleFail1a', normal, compile_fail, [''])
 test('SimpleFail1b', normal, compile_fail, [''])
 test('SimpleFail2a', normal, compile_fail, [''])

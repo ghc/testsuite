@@ -1,0 +1,12 @@
+
+NonLinearLHS.hs:8:15:
+    Repeated variable in standalone instance not allowed: E a a
+    In the type instance declaration for ‛E’
+
+NonLinearLHS.hs:14:1:
+    Repeated variable in standalone instance not allowed: F a a
+    In the data instance declaration for ‛F’
+
+NonLinearLHS.hs:25:15:
+    Repeated variable in standalone instance not allowed: EqTy a a
+    In the type instance declaration for ‛EqTy’
