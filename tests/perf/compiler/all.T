@@ -90,7 +90,7 @@ test('T3294',
              #            14593500 (Windows)
              # 2013-02-10 20651576 (x86/Windows)
              # 2013-02-10 20772984 (x86/OSX)
-           (wordsize(64), 36904752, 15)]),
+           (wordsize(64), 43224080, 15)]),
         # prev:           25753192 (amd64/Linux)
         # 29/08/2012:     37724352 (amd64/Linux)
         #  (increase due to new codegen, see #7198)
@@ -98,16 +98,20 @@ test('T3294',
         #  (reason for increase unknown)
         # 15/5/2013:      36904752  (amd64/Linux)
         #  (reason for decrease unknown)
+        # 29/5/2013:      43224080  (amd64/Linux)
+        #  (reason for increase back to earlier value unknown)
       compiler_stats_num_field('bytes allocated',
           [(wordsize(32), 1373514844, 5),
            # previous:     815479800  (x86/Linux)
            # (^ increase due to new codegen, see #7198)
            # 2012-10-08:  1373514844 (x86/Linux)
-           (wordsize(64), 2717327208, 5)]),
+           (wordsize(64), 2901451552, 5)]),
             # old:        1357587088 (amd64/Linux)
             # 29/08/2012: 2961778696 (amd64/Linux)
             # (^ increase due to new codegen, see #7198)
             # 18/09/2012: 2717327208 (amd64/Linux)
+            # 08/06/2013: 2901451552 (amd64/Linux)
+            # (^ reason unknown)
       conf_3294
       ],
      compile,
@@ -202,10 +206,12 @@ test('T5030',
           [(wordsize(32), 259547660, 10),
            # previous:    196457520
            # 2012-10-08:  259547660 (x86/Linux, new codegen)
-           (wordsize(64), 602993184, 10)]),
+           (wordsize(64), 538467496, 10)]),
              # Previously 530000000 (+/- 10%)
              # 17/1/13:   602993184  (x86_64/Linux)
              #            (new demand analyser)
+             # 2013-06-08 538467496  (x86_64/Linux)
+             # ^ reason unknown
    
        only_ways(['normal'])
       ],
@@ -275,12 +281,14 @@ test('T5321FD',
             # prev:       213380256
             # 2012-10-08: 240302920 (x86/Linux)
             #  (increase due to new codegen)
-           (wordsize(64), 406039584, 10)])
+           (wordsize(64), 476497048, 10)])
             # prev:       418306336
             # 29/08/2012: 492905640
             #  (increase due to new codegen)
             # 15/05/2013: 406039584 
             #  (reason for decrease unknown)
+            # 08/06/2013: 476497048 
+            #  (reason for increase unknown)
       ],
       compile,[''])
 

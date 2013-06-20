@@ -77,7 +77,7 @@ test('ghci056',
      [
        pre_cmd('$MAKE -s --no-print-directory ghci056_setup'),
        extra_run_opts('ghci056_c.o'),
-       extra_clean('ghci056_c.o')
+       extra_clean(['ghci056_c.o'])
      ],
      ghci_script, ['ghci056.script'])
 
@@ -150,4 +150,5 @@ test('T4175', normal, ghci_script, ['T4175.script'])
 test('T7872', normal, ghci_script, ['T7872.script'])
 test('T7873', normal, ghci_script, ['T7873.script'])
 test('T7939', normal, ghci_script, ['T7939.script'])
+test('T7894', normal, ghci_script, ['T7894.script'])
 
