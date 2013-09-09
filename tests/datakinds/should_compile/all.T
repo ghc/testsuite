@@ -1,0 +1,10 @@
+
+test('DataKind1', normal, compile, [''])
+test('DataKind2', normal, compile, [''])
+test('DataKind3', normal, compile, [''])
+test('DataKind4', normal, compile, [''])
+test('DataKind5', normal, compile, [''])
+test('DataKind6', normal, compile, [''])
+test('DataKind7', normal, compile, [''])
+test('DataKind8', normal, compile, [''])
+test('DataKind9', normal, compile, [''])

@@ -1,0 +1,3 @@
+
+FailDataKind3.hs:5:1:
+    Illegal polymorphic `data kind` declaration (use -XPolyKinds to enable)

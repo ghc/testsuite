@@ -1,0 +1,3 @@
+
+FailDataKind2.hs:4:6:
+    Malformed head of type or class declaration: kind Foo

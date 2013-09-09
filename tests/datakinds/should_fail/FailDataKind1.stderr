@@ -1,0 +1,3 @@
+
+FailDataKind1.hs:4:1:
+    Illegal `data type` declaration (use -XDataKinds to enable)

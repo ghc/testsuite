@@ -1,0 +1,4 @@
+
+FailDataKind5.hs:6:21:
+    ‛Int’ of kind ‛*’ is not promotable
+    In the kind ‛Int’

@@ -1,0 +1,10 @@
+
+FailDataKind6.hs:5:15:
+    Multiple declarations of ‛K’
+    Declared at: FailDataKind6.hs:5:11
+                 FailDataKind6.hs:5:15
+
+FailDataKind6.hs:8:15:
+    Multiple declarations of ‛A’
+    Declared at: FailDataKind6.hs:7:11
+                 FailDataKind6.hs:8:15

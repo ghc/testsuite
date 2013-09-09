@@ -1,0 +1,4 @@
+
+FailDataKind8.hs:6:22:
+    ‛Nat’ of kind ‛*’ is not promotable
+    In the kind ‛Nat’

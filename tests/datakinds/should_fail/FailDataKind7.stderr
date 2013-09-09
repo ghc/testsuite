@@ -1,0 +1,5 @@
+
+FailDataKind7.hs:8:16:
+    Type constructor ‛K’ cannot be used here
+      (it is defined and used in the same recursive group)
+    In the kind ‛K’
