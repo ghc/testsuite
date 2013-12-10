@@ -1,0 +1,5 @@
+
+==================== Strictness signatures ====================
+ExtendedEu.extendedEu: <L,1*U(U)><S(S),1*U(U)>dm(tm(d),tm(d))
+
+
